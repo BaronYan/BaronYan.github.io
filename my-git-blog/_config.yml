@@ -3,19 +3,19 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle:
-description:
-keywords:
-author: John Doe
-language:
+title: BaronYan's blog
+subtitle: BaronYan happy
+description: JavaScript/CSS(3)/HTML(5)|typyscript/vue.js/sass/webpack/gulp/bootstrap
+keywords: JavaScript/CSS(3)/HTML(5)|typyscript/vue.js/sass/webpack/gulp/bootstrap
+author: BaronYan
+language: zh-CN
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: https://baronyan.github.io
 root: /
-permalink: :year/:month/:day/:title/
+permalink: :year-:month-:day/:title/
 permalink_defaults:
 
 # Directory
