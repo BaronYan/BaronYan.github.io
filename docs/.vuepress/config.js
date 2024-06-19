@@ -2,7 +2,8 @@ import { blogPlugin } from '@vuepress/plugin-blog'
 import { defaultTheme } from '@vuepress/theme-default'
 import { defineUserConfig } from 'vuepress'
 import { viteBundler } from '@vuepress/bundler-vite'
-
+import autoprefixer from "autoprefixer";
+import tailwindcss from 'tailwindcss'
 export default defineUserConfig({
   lang: 'en-US',
 
@@ -17,6 +18,10 @@ export default defineUserConfig({
       {
         text: 'Article',
         link: '/article/',
+      },
+      {
+        text: 'Vue3',
+        link: '/vue3/',
       },
       {
         text: 'Vue的设计与实现',
@@ -148,15 +153,15 @@ export default defineUserConfig({
   ],
 
   bundler: viteBundler({
-    // viteOptions: {
-    //     css:{
-    //         postcss: {
-    //             plugins: [
-    //                 require('autoprefixer'),
-    //                 require('tailwindcss'),
-    //             ]
-    //         }
-    //     }
-    // }
+    viteOptions: {
+        css:{
+            postcss: {
+                plugins: [
+                  autoprefixer,
+                  tailwindcss,
+                ]
+            }
+        }
+    }
   }),
 })

@@ -1,5 +1,9 @@
-<template><div><h1 id="vnode-component" tabindex="-1"><a class="header-anchor" href="#vnode-component"><span>vnode.component</span></a></h1>
-<p>在 Vue 3 中，虚拟节点（VNode）是对真实 DOM 节点的抽象表示。VNode 包含了组件树的状态和结构信息，而不是实际的 DOM 元素。在这个上下文中，component 属性是 VNode 的一个重要部分，特别是在处理组件时。</p>
+<template><div><p>相关链接：</p>
+<p><RouteLink to="/vue3/%E5%B0%81%E8%A3%85Message%E7%BB%84%E4%BB%B6.html">封装一个 Message 函数式组件</RouteLink></p>
+<h2 id="vnode-介绍" tabindex="-1"><a class="header-anchor" href="#vnode-介绍"><span>VNode 介绍</span></a></h2>
+<p>在 Vue 3 中，虚拟节点（<code v-pre>VNode</code>）是对真实 DOM 节点的抽象表示。</p>
+<div class="text-brand-500">VNode 包含了组件树的状态和结构信息，而不是实际的 DOM 元素。</div>
+<p>在这个上下文中，component 属性是 VNode 的一个重要部分，特别是在处理组件时。</p>
 <p>具体来说，component 属性用于存储与 VNode 关联的组件实例。它包含了与该 VNode 对应的 Vue 组件的所有信息和方法。下面是一些相关细节：</p>
 <ol>
 <li><strong>组件实例</strong>：<br>

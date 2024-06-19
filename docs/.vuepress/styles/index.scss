@@ -1,3 +1,3 @@
-@tailwind base;
+//@tailwind base; // 请注意，导入base样式可能会导致 VuePress 的默认样式被覆盖，最好不要导入
 @tailwind components;
 @tailwind utilities;
