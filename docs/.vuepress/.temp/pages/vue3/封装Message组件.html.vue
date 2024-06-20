@@ -1,6 +1,7 @@
 <template><div><p><strong>相关链接：</strong></p>
 <ul>
-<li><RouteLink to="/vue3/vnode.component.html">vnode.component 介绍</RouteLink></li>
+<li><RouteLink to="/vue3/vnode.component.html">虚拟节点介绍</RouteLink></li>
+<li><RouteLink to="/vue3/createVNode.html">createVNode</RouteLink></li>
 </ul>
 <h2 id="封装一个-message-组件" tabindex="-1"><a class="header-anchor" href="#封装一个-message-组件"><span>封装一个 Message 组件</span></a></h2>
 <p>封装函数式组件的核心点主要是：</p>

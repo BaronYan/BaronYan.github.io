@@ -8,8 +8,8 @@ description: 封装一个 Message 组件
 
 **相关链接：**
 
-- [vnode.component 介绍](vnode.component.md)
-
+- [虚拟节点介绍](vnode.component.md)
+- [createVNode](createVNode.md)
 
 ## 封装一个 Message 组件
 

@@ -1,61 +1,78 @@
 <template><div><p>相关链接：</p>
 <p><RouteLink to="/vue3/%E5%B0%81%E8%A3%85Message%E7%BB%84%E4%BB%B6.html">封装一个 Message 函数式组件</RouteLink></p>
-<h2 id="vnode-介绍" tabindex="-1"><a class="header-anchor" href="#vnode-介绍"><span>VNode 介绍</span></a></h2>
-<p>在 Vue 3 中，虚拟节点（<code v-pre>VNode</code>）是对真实 DOM 节点的抽象表示。</p>
-<div class="text-brand-500">VNode 包含了组件树的状态和结构信息，而不是实际的 DOM 元素。</div>
-<p>在这个上下文中，component 属性是 VNode 的一个重要部分，特别是在处理组件时。</p>
-<p>具体来说，component 属性用于存储与 VNode 关联的组件实例。它包含了与该 VNode 对应的 Vue 组件的所有信息和方法。下面是一些相关细节：</p>
-<ol>
-<li><strong>组件实例</strong>：<br>
-component 属性持有的是一个组件实例，它包含了组件的所有状态、方法、生命周期钩子等等。</li>
-<li><strong>动态组件</strong>：<br>
-当使用动态组件时，component 属性会被更新以反映当前渲染的组件。</li>
-<li><strong>访问组件实例</strong>：<br>
-可以通过访问 VNode 的 component 属性来获得与之关联的 Vue 组件实例。这对于一些高级操作或自定义渲染逻辑非常有用。</li>
-<li><strong>组件内部状态</strong>：<br>
-component 属性中的组件实例包含了组件的内部状态（如 data、props、computed 等），这可以用来调试或者执行一些复杂的状态管理。</li>
-</ol>
-<h2 id="示例" tabindex="-1"><a class="header-anchor" href="#示例"><span>示例</span></a></h2>
-<p>假设你有一个简单的 Vue 组件结构，并希望通过 VNode 来访问组件实例：</p>
-<div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js" data-title="js"><pre v-pre class="language-javascript"><code><span class="line"><span class="token keyword">const</span> app <span class="token operator">=</span> Vue<span class="token punctuation">.</span><span class="token function">createApp</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
-<span class="line">  <span class="token literal-property property">template</span><span class="token operator">:</span> <span class="token string">'&lt;div>&lt;my-component>&lt;/my-component>&lt;/div>'</span><span class="token punctuation">,</span></span>
-<span class="line">  <span class="token literal-property property">components</span><span class="token operator">:</span> <span class="token punctuation">{</span></span>
-<span class="line">    <span class="token literal-property property">MyComponent</span><span class="token operator">:</span> <span class="token punctuation">{</span></span>
-<span class="line">      <span class="token literal-property property">template</span><span class="token operator">:</span> <span class="token string">'&lt;div>Hello, World!&lt;/div>'</span><span class="token punctuation">,</span></span>
-<span class="line">      <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
-<span class="line">        <span class="token keyword">return</span> <span class="token punctuation">{</span></span>
-<span class="line">          <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">'Hello from MyComponent'</span></span>
-<span class="line">        <span class="token punctuation">}</span></span>
-<span class="line">      <span class="token punctuation">}</span></span>
-<span class="line">    <span class="token punctuation">}</span></span>
-<span class="line">  <span class="token punctuation">}</span></span>
-<span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<h2 id="vnode-介绍" tabindex="-1"><a class="header-anchor" href="#vnode-介绍"><span>vnode 介绍</span></a></h2>
+<p>虚拟节点（vnode:Virtual Node）</p>
+<span class="text-brand-500 font-bold">
+虚拟节点（VNode）是对真实 DOM 节点的抽象表示，用于高效地更新和渲染视图。 包含了组件树的状态和结构信息，而不是实际的 DOM 元素。
+</span>
+<p>一个 <code v-pre>vnode</code> 对象通常包含以下信息：</p>
+<ul>
+<li><code v-pre>type</code>: 节点的类型，可以是 HTML 标签名、组件对象或异步组件。</li>
+<li><code v-pre>props</code>: 节点的属性和属性值。</li>
+<li><code v-pre>children</code>: 子节点列表。</li>
+<li><code v-pre>key</code>: 节点的唯一标识，用于优化更新。</li>
+<li><code v-pre>el</code>: <span class="text-brand-500">对应的真实 DOM 节点，在挂载时会赋值。</span></li>
+</ul>
+<p>举个例子，使用 <code v-pre>createVNode</code> 创建一个简单的虚拟节点：</p>
+<div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js" data-title="js"><pre v-pre class="language-javascript"><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> createVNode <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span><span class="token punctuation">;</span></span>
 <span class="line"></span>
-<span class="line">app<span class="token punctuation">.</span><span class="token function">mount</span><span class="token punctuation">(</span><span class="token string">'#app'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">const</span> vnode <span class="token operator">=</span> <span class="token function">createVNode</span><span class="token punctuation">(</span><span class="token string">'div'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token keyword">class</span><span class="token operator">:</span> <span class="token string">'my-div'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">'Hello, world!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>vnode<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
 <span class="line"></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>在这个例子中，<code v-pre>&lt;my-component&gt;</code> 是一个自定义组件。当它被渲染成 VNode 时，component 属性会持有这个组件的实例。</p>
-<h2 id="访问-vnode-的-component-属性" tabindex="-1"><a class="header-anchor" href="#访问-vnode-的-component-属性"><span>访问 VNode 的 component 属性</span></a></h2>
-<p>在 Vue 3 中，通过 Vue 的内部 API 或者调试工具，可以访问 VNode 的 component 属性。例如：</p>
-<div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js" data-title="js"><pre v-pre class="language-javascript"><code><span class="line"><span class="token comment">// 获取应用的根实例</span></span>
-<span class="line"><span class="token keyword">const</span> vm <span class="token operator">=</span> app<span class="token punctuation">.</span>_instance<span class="token punctuation">;</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>输出的 <code v-pre>vnode</code> 对象可能类似于：</p>
+<div class="language-json line-numbers-mode" data-highlighter="prismjs" data-ext="json" data-title="json"><pre v-pre class="language-json"><code><span class="line"><span class="token punctuation">{</span></span>
+<span class="line">  <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"div"</span><span class="token punctuation">,</span></span>
+<span class="line">  <span class="token property">"props"</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token property">"class"</span><span class="token operator">:</span> <span class="token string">"my-div"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">  <span class="token property">"children"</span><span class="token operator">:</span> <span class="token string">"Hello, world!"</span><span class="token punctuation">,</span></span>
+<span class="line">  <span class="token property">"key"</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span></span>
+<span class="line">  <span class="token property">"el"</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span></span>
+<span class="line">  <span class="token comment">// ...其他内部属性</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="vnode-component" tabindex="-1"><a class="header-anchor" href="#vnode-component"><span>vnode.component</span></a></h2>
+<ul>
+<li><code v-pre>vnode.component</code> 是与组件实例相关的属性</li>
+<li>当 vnode 表示的是一个组件节点时，<code v-pre>vnode.component</code> 会指向这个组件的实例对象（Component Instance）。</li>
+<li>组件实例对象包含了组件的状态、生命周期钩子、方法等信息。</li>
+<li>它是 Vue 组件的实际运行实例。</li>
+<li>当你使用 <code v-pre>createVNode</code> 创建一个组件的虚拟节点时，<code v-pre>vnode.component</code> <span class="bg-yellow-200">会在组件挂载时被赋值</span>：</li>
+</ul>
+<div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js" data-title="js"><pre v-pre class="language-javascript"><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> createVNode<span class="token punctuation">,</span> render <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> MyComponent <span class="token keyword">from</span> <span class="token string">'./MyComponent.vue'</span><span class="token punctuation">;</span></span>
 <span class="line"></span>
-<span class="line"><span class="token comment">// 获取根实例的 VNode</span></span>
-<span class="line"><span class="token keyword">const</span> rootVNode <span class="token operator">=</span> vm<span class="token punctuation">.</span>vnode<span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">const</span> vnode <span class="token operator">=</span> <span class="token function">createVNode</span><span class="token punctuation">(</span>MyComponent<span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">'Hello from component'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>vnode<span class="token punctuation">.</span>component<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// undefined, 因为组件还没有挂载</span></span>
 <span class="line"></span>
-<span class="line"><span class="token comment">// 假设 `my-component` 是根 VNode 的第一个子节点</span></span>
-<span class="line"><span class="token keyword">const</span> myComponentVNode <span class="token operator">=</span> rootVNode<span class="token punctuation">.</span>children<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">const</span> container <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'div'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>container<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token function">render</span><span class="token punctuation">(</span>vnode<span class="token punctuation">,</span> container<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
 <span class="line"></span>
-<span class="line"><span class="token comment">// 访问 `my-component` 的组件实例</span></span>
-<span class="line"><span class="token keyword">const</span> myComponentInstance <span class="token operator">=</span> myComponentVNode<span class="token punctuation">.</span>component<span class="token punctuation">;</span></span>
-<span class="line"></span>
-<span class="line"><span class="token comment">// 现在可以访问组件实例上的所有数据和方法</span></span>
-<span class="line">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>myComponentInstance<span class="token punctuation">.</span>ctx<span class="token punctuation">.</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出 "Hello from MyComponent"</span></span>
+<span class="line">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>vnode<span class="token punctuation">.</span>component<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 组件实例对象</span></span>
 <span class="line"></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="注意" tabindex="-1"><a class="header-anchor" href="#注意"><span>注意</span></a></h2>
-<p>直接操作 VNode 和组件实例是高级特性，通常在编写自定义渲染器或者进行深度调试时使用。在一般的应用开发中，Vue 提供的模板语法和组合式 API 足以满足大多数需求。</p>
-<p>通过理解 VNode 的 component 属性，你可以更深入地了解 Vue 3 的内部工作原理，并在需要时进行更加复杂的操作。</p>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>在组件被挂载之后，<code v-pre>vnode.component</code> 会包含如下信息：</p>
+<div class="language-json line-numbers-mode" data-highlighter="prismjs" data-ext="json" data-title="json"><pre v-pre class="language-json"><code><span class="line"><span class="token punctuation">{</span></span>
+<span class="line">   <span class="token property">"props"</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token property">"message"</span><span class="token operator">:</span> <span class="token string">"Hello from component"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">   <span class="token property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span> ... <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">   <span class="token property">"methods"</span><span class="token operator">:</span> <span class="token punctuation">{</span> ... <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">   <span class="token property">"computed"</span><span class="token operator">:</span> <span class="token punctuation">{</span> ... <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">   <span class="token property">"watch"</span><span class="token operator">:</span> <span class="token punctuation">{</span> ... <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">   <span class="token comment">// ...其他组件实例相关的属性和方法</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="区别总结" tabindex="-1"><a class="header-anchor" href="#区别总结"><span>区别总结</span></a></h2>
+<ul>
+<li><code v-pre>vnode</code>: 是虚拟节点对象，用于描述组件树中的节点结构，包括 HTML 元素节点和组件节点。</li>
+<li><code v-pre>vnode.component</code>: 当 <code v-pre>vnode</code> 表示一个组件节点时，<code v-pre>vnode.component</code> 指向该组件的实例对象，包含了组件的状态和方法。</li>
+</ul>
+<h3 id="应用场景" tabindex="-1"><a class="header-anchor" href="#应用场景"><span>应用场景</span></a></h3>
+<p>在实际开发中，理解 <code v-pre>vnode</code> 和 <code v-pre>vnode.component</code> 的区别可以帮助我们更好地进行以下操作：</p>
+<ul>
+<li><strong>自定义渲染逻辑</strong>：通过 <code v-pre>vnode</code> 可以操作虚拟 DOM，从而实现自定义的渲染逻辑。</li>
+<li><strong>访问组件实例</strong>：通过 <code v-pre>vnode.component</code> 可以访问组件实例，从而调用组件的方法或访问其数据。</li>
+</ul>
+<p>例如，在上面的函数式 <code v-pre>Message</code> 组件中，我们可以利用 <code v-pre>vnode</code> 创建和渲染消息组件，并通过 <code v-pre>vnode.component</code> 控制消息的关闭和其他交互逻辑。</p>
 </div></template>
 
 

@@ -14,73 +14,90 @@ prev:
 [封装一个 Message 函数式组件](封装Message组件.md)
 
 
-## VNode 介绍
+## vnode 介绍
 
-在 Vue 3 中，虚拟节点（`VNode`）是对真实 DOM 节点的抽象表示。
-<div class="text-brand-500">VNode 包含了组件树的状态和结构信息，而不是实际的 DOM 元素。</div>
+虚拟节点（vnode:Virtual Node）
 
-在这个上下文中，component 属性是 VNode 的一个重要部分，特别是在处理组件时。
+<span class="text-brand-500 font-bold">
+虚拟节点（VNode）是对真实 DOM 节点的抽象表示，用于高效地更新和渲染视图。 包含了组件树的状态和结构信息，而不是实际的 DOM 元素。
+</span>
 
-具体来说，component 属性用于存储与 VNode 关联的组件实例。它包含了与该 VNode 对应的 Vue 组件的所有信息和方法。下面是一些相关细节：
+一个 `vnode` 对象通常包含以下信息：
 
-1. **组件实例**：  
-   component 属性持有的是一个组件实例，它包含了组件的所有状态、方法、生命周期钩子等等。
-2. **动态组件**：  
-   当使用动态组件时，component 属性会被更新以反映当前渲染的组件。
-3. **访问组件实例**：  
-   可以通过访问 VNode 的 component 属性来获得与之关联的 Vue 组件实例。这对于一些高级操作或自定义渲染逻辑非常有用。
-4. **组件内部状态**：  
-   component 属性中的组件实例包含了组件的内部状态（如 data、props、computed 等），这可以用来调试或者执行一些复杂的状态管理。
+- `type`: 节点的类型，可以是 HTML 标签名、组件对象或异步组件。
+- `props`: 节点的属性和属性值。
+- `children`: 子节点列表。
+- `key`: 节点的唯一标识，用于优化更新。
+- `el`: <span class="text-brand-500">对应的真实 DOM 节点，在挂载时会赋值。</span>
 
-## 示例
-
-假设你有一个简单的 Vue 组件结构，并希望通过 VNode 来访问组件实例：
-
+举个例子，使用 `createVNode` 创建一个简单的虚拟节点：
 ```javascript
-const app = Vue.createApp({
-  template: '<div><my-component></my-component></div>',
-  components: {
-    MyComponent: {
-      template: '<div>Hello, World!</div>',
-      data() {
-        return {
-          message: 'Hello from MyComponent'
-        }
-      }
-    }
-  }
-});
+import { createVNode } from 'vue';
 
-app.mount('#app');
+const vnode = createVNode('div', { class: 'my-div' }, 'Hello, world!');
+console.log(vnode);
 
 ```
+输出的 `vnode` 对象可能类似于：
 
-在这个例子中，`<my-component>` 是一个自定义组件。当它被渲染成 VNode 时，component 属性会持有这个组件的实例。
-
-## 访问 VNode 的 component 属性
-
-在 Vue 3 中，通过 Vue 的内部 API 或者调试工具，可以访问 VNode 的 component 属性。例如：
-
-```javascript
-// 获取应用的根实例
-const vm = app._instance;
-
-// 获取根实例的 VNode
-const rootVNode = vm.vnode;
-
-// 假设 `my-component` 是根 VNode 的第一个子节点
-const myComponentVNode = rootVNode.children[0];
-
-// 访问 `my-component` 的组件实例
-const myComponentInstance = myComponentVNode.component;
-
-// 现在可以访问组件实例上的所有数据和方法
-console.log(myComponentInstance.ctx.message); // 输出 "Hello from MyComponent"
-
+```json
+{
+  "type": "div",
+  "props": { "class": "my-div" },
+  "children": "Hello, world!",
+  "key": null,
+  "el": null,
+  // ...其他内部属性
+}
 ```
 
-## 注意
 
-直接操作 VNode 和组件实例是高级特性，通常在编写自定义渲染器或者进行深度调试时使用。在一般的应用开发中，Vue 提供的模板语法和组合式 API 足以满足大多数需求。
+## vnode.component
 
-通过理解 VNode 的 component 属性，你可以更深入地了解 Vue 3 的内部工作原理，并在需要时进行更加复杂的操作。
+- `vnode.component` 是与组件实例相关的属性
+- 当 vnode 表示的是一个组件节点时，`vnode.component` 会指向这个组件的实例对象（Component Instance）。
+- 组件实例对象包含了组件的状态、生命周期钩子、方法等信息。
+- 它是 Vue 组件的实际运行实例。
+- 当你使用 `createVNode` 创建一个组件的虚拟节点时，`vnode.component` <span class="bg-yellow-200">会在组件挂载时被赋值</span>：
+
+```javascript
+import { createVNode, render } from 'vue';
+import MyComponent from './MyComponent.vue';
+
+const vnode = createVNode(MyComponent, { message: 'Hello from component' });
+console.log(vnode.component); // undefined, 因为组件还没有挂载
+
+const container = document.createElement('div');
+document.body.appendChild(container);
+render(vnode, container);
+
+console.log(vnode.component); // 组件实例对象
+
+```
+在组件被挂载之后，`vnode.component` 会包含如下信息：
+```json
+{
+   "props": { "message": "Hello from component" },
+   "data": { ... },
+   "methods": { ... },
+   "computed": { ... },
+   "watch": { ... },
+   // ...其他组件实例相关的属性和方法
+}
+```
+
+## 区别总结
+
+- `vnode`: 是虚拟节点对象，用于描述组件树中的节点结构，包括 HTML 元素节点和组件节点。
+- `vnode.component`: 当 `vnode` 表示一个组件节点时，`vnode.component` 指向该组件的实例对象，包含了组件的状态和方法。
+
+### 应用场景
+
+在实际开发中，理解 `vnode` 和 `vnode.component` 的区别可以帮助我们更好地进行以下操作：
+
+- **自定义渲染逻辑**：通过 `vnode` 可以操作虚拟 DOM，从而实现自定义的渲染逻辑。
+- **访问组件实例**：通过 `vnode.component` 可以访问组件实例，从而调用组件的方法或访问其数据。
+
+例如，在上面的函数式 `Message` 组件中，我们可以利用 `vnode` 创建和渲染消息组件，并通过 `vnode.component` 控制消息的关闭和其他交互逻辑。
+
+
