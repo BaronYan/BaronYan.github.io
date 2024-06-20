@@ -1,5 +1,9 @@
-<template><div><p>相关链接：</p>
-<p><RouteLink to="/vue3/%E5%B0%81%E8%A3%85Message%E7%BB%84%E4%BB%B6.html">封装一个 Message 函数式组件</RouteLink></p>
+<template><div><p><strong>相关链接：</strong></p>
+<ul>
+<li><RouteLink to="/vue3/%E5%B0%81%E8%A3%85Message%E7%BB%84%E4%BB%B6.html">封装一个 Message 函数式组件</RouteLink></li>
+<li><RouteLink to="/vue3/createVNode.html">createVNode函数</RouteLink></li>
+<li><RouteLink to="/vue3/render.html">render函数</RouteLink></li>
+</ul>
 <h2 id="vnode-介绍" tabindex="-1"><a class="header-anchor" href="#vnode-介绍"><span>vnode 介绍</span></a></h2>
 <p>虚拟节点（vnode:Virtual Node）</p>
 <span class="text-brand-500 font-bold">

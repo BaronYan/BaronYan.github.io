@@ -1,12 +1,13 @@
 <template><div><p><strong>相关链接：</strong></p>
 <ul>
 <li><RouteLink to="/vue3/vnode.component.html">虚拟节点介绍</RouteLink></li>
-<li><RouteLink to="/vue3/createVNode.html">createVNode</RouteLink></li>
+<li><RouteLink to="/vue3/createVNode.html">createVNode函数</RouteLink></li>
+<li><RouteLink to="/vue3/render.html">render函数</RouteLink></li>
 </ul>
 <h2 id="封装一个-message-组件" tabindex="-1"><a class="header-anchor" href="#封装一个-message-组件"><span>封装一个 Message 组件</span></a></h2>
 <p>封装函数式组件的核心点主要是：</p>
 <ol>
-<li>学会熟练使用 <code v-pre>createVNode</code> 函数创建 vNode</li>
+<li>学会熟练使用 <RouteLink to="/vue3/createVNode.html">createVNode</RouteLink> 函数创建 vNode</li>
 <li>以及使用 <code v-pre>render</code>函数将 vNode 渲染成真实DOM。</li>
 </ol>
 <p>以下是一个基本的实现步骤，包括创建组件和通过插件安装全局调用的方法。</p>

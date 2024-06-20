@@ -9,10 +9,11 @@ prev:
   link: vue3/封装Message组件.md
 ---
 
-相关链接：
+**相关链接：**
 
-[封装一个 Message 函数式组件](封装Message组件.md)
-
+- [封装一个 Message 函数式组件](封装Message组件.md)
+- [createVNode函数](createVNode.md)
+- [render函数](render.md)
 
 ## vnode 介绍
 

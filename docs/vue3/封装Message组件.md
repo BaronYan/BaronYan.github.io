@@ -9,13 +9,14 @@ description: 封装一个 Message 组件
 **相关链接：**
 
 - [虚拟节点介绍](vnode.component.md)
-- [createVNode](createVNode.md)
+- [createVNode函数](createVNode.md)
+- [render函数](render.md)
 
 ## 封装一个 Message 组件
 
 封装函数式组件的核心点主要是：
 
-1. 学会熟练使用 `createVNode` 函数创建 vNode
+1. 学会熟练使用 [createVNode](createVNode.md) 函数创建 vNode
 2. 以及使用 `render`函数将 vNode 渲染成真实DOM。
 
 以下是一个基本的实现步骤，包括创建组件和通过插件安装全局调用的方法。

@@ -2,6 +2,7 @@
 <ul>
 <li><RouteLink to="/vue3/%E5%B0%81%E8%A3%85Message%E7%BB%84%E4%BB%B6.html">封装一个 Message 函数式组件</RouteLink></li>
 <li><RouteLink to="/vue3/vnode.component.html">虚拟节点介绍</RouteLink></li>
+<li><RouteLink to="/vue3/render.html">render函数</RouteLink></li>
 </ul>
 <h2 id="介绍" tabindex="-1"><a class="header-anchor" href="#介绍"><span>介绍</span></a></h2>
 <p>createVNode 函数是 Vue 3 中用于创建虚拟节点（VNode）的核心函数之一。
@@ -37,6 +38,14 @@
 <ul>
 <li>子节点，可以是单个 VNode、字符串或一个 VNode 数组</li>
 <li>可以嵌套 VNode，形成树形结构</li>
+<li>可以是一个函数，用于渲染子节点</li>
+<li>可以是一个异步函数，用于异步渲染子节点</li>
+<li>可以是一个 Promise，用于异步渲染子节点</li>
+<li>可以是一个对象，用于渲染子节点
+<ul>
+<li>default: 一个函数，用于渲染默认插槽子节点</li>
+</ul>
+</li>
 </ul>
 </li>
 </ol>
@@ -121,7 +130,34 @@
 <span class="line"></span>
 <span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> MessageFunction<span class="token punctuation">;</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="总结" tabindex="-1"><a class="header-anchor" href="#总结"><span>总结</span></a></h2>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="当第三个参数为对象时" tabindex="-1"><a class="header-anchor" href="#当第三个参数为对象时"><span>当第三个参数为对象时</span></a></h2>
+<div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js" data-title="js"><pre v-pre class="language-javascript"><code><span class="line"><span class="token keyword">const</span> vnode <span class="token operator">=</span> <span class="token function">createVNode</span><span class="token punctuation">(</span>Message<span class="token punctuation">,</span> props<span class="token punctuation">,</span></span>
+<span class="line">        <span class="token function">isFunction</span><span class="token punctuation">(</span>props<span class="token punctuation">.</span>message<span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token function">isVNode</span><span class="token punctuation">(</span>props<span class="token punctuation">.</span>message<span class="token punctuation">)</span></span>
+<span class="line">                <span class="token operator">?</span></span>
+<span class="line">                <span class="token punctuation">{</span></span>
+<span class="line">                   <span class="token keyword">default</span><span class="token operator">:</span> <span class="token function">isFunction</span><span class="token punctuation">(</span>props<span class="token punctuation">.</span>message<span class="token punctuation">)</span></span>
+<span class="line">                           <span class="token operator">?</span> props<span class="token punctuation">.</span><span class="token function-variable function">message</span></span>
+<span class="line">                           <span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> props<span class="token punctuation">.</span>message</span>
+<span class="line">                <span class="token punctuation">}</span></span>
+<span class="line">                <span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>在 Vue 3 中，<code v-pre>default</code> 是一个插槽（Slot）的名称。如上代码中，<code v-pre>default</code> 是作为插槽名称用于创建虚拟节点（VNode）。</p>
+<ol>
+<li>createVNode 函数：这是 Vue 3 提供的一个用于创建虚拟节点的函数。</li>
+<li>Message：这是一个组件或者组件选项，用于创建虚拟节点。</li>
+<li>props：这是传递给组件的属性对象。</li>
+<li>isFunction(props.message) || isVNode(props.message)：这是一个条件判断，用于检查 props.message 是否是一个函数或者已经是一个 VNode。</li>
+<li>条件判断中的对象：
+<ul>
+<li>如果 <code v-pre>props.message</code> 是一个函数 (isFunction(props.message) 返回 true)，那么 { default: props.message } 将作为插槽对象传递给 createVNode。</li>
+<li>如果 <code v-pre>props.message</code> 不是一个函数，而是一个值，将使用一个匿名函数 <code v-pre>() =&gt; props.message</code> 作为插槽内容，然后 { default: ... } 将作为插槽对象传递给 createVNode。</li>
+<li>如果 <code v-pre>props.message</code> 既不是函数也不是 VNode，插槽对象将设置为 null，这将意味着没有插槽被传递给 createVNode。</li>
+</ul>
+</li>
+</ol>
+<p><strong>关于 default 插槽</strong></p>
+<p>在 Vue 中，插槽（Slot）是一种机制，用于在父组件中向子组件传递内容。在这里，default 是一个插槽的名称，用于指定默认插槽。默认插槽是没有具体名称的插槽，用于接收没有被具名插槽接收的内容。</p>
+<h2 id="总结" tabindex="-1"><a class="header-anchor" href="#总结"><span>总结</span></a></h2>
 <p>createVNode 是 Vue 3 中创建虚拟节点的核心工具，通过它可以手动控制组件和元素的创建和渲染。它提供了强大的灵活性，使得我们可以更灵活地操作 DOM，并在函数式组件和插件开发中发挥重要作用。</p>
 </div></template>
 
