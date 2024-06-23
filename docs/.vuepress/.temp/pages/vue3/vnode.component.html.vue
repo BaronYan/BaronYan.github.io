@@ -35,6 +35,11 @@
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="vnode-component" tabindex="-1"><a class="header-anchor" href="#vnode-component"><span>vnode.component</span></a></h2>
+<p>在Vue3中，虚拟节点（<code v-pre>vnode</code>）的 <code v-pre>component</code> 属性<strong>用于存放与该虚拟节点关联的组件实例信息</strong>。</p>
+<p>具体来说，<span class="bg-green-200"> 当一个虚拟节点表示一个<strong>组件</strong>时，component 属性会引用这个组件实例对象。</span>
+这个组件实例对象包含了组件的状态、方法等信息，是组件生命周期、渲染和更新机制的重要部分。
+这意味着，通过component属性，Vue框架获得了维护和管理组件实例所需要的一切信息，这对于组件的挂载、更新和销毁过程至关重要。<br>
+简而言之，component属性是虚拟节点与其表示的组件实例之间的桥梁。</p>
 <ul>
 <li><code v-pre>vnode.component</code> 是与组件实例相关的属性</li>
 <li>当 vnode 表示的是一个组件节点时，<code v-pre>vnode.component</code> 会指向这个组件的实例对象（Component Instance）。</li>

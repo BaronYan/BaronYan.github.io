@@ -16,8 +16,8 @@ export default defineUserConfig({
     navbar: [
       '/',
       {
-        text: 'Article',
-        link: '/article/',
+        text: 'JavaScript',
+        link: '/JavaScript/',
       },
       {
         text: 'Vue3',
