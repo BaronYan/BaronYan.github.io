@@ -15,43 +15,12 @@ prev:
 - [createVNode函数](createVNode.md)
 - [render函数](render.md)
 
-## vnode 介绍
+## 介绍
 
-虚拟节点（vnode:Virtual Node）
-
-<span class="text-brand-500 font-bold">
-虚拟节点（VNode）是对真实 DOM 节点的抽象表示，用于高效地更新和渲染视图。 包含了组件树的状态和结构信息，而不是实际的 DOM 元素。
-</span>
-
-一个 `vnode` 对象通常包含以下信息：
-
-- `type`: 节点的类型，可以是 HTML 标签名、组件对象或异步组件。
-- `props`: 节点的属性和属性值。
-- `children`: 子节点列表。
-- `key`: 节点的唯一标识，用于优化更新。
-- `el`: <span class="text-brand-500">对应的真实 DOM 节点，在挂载时会赋值。</span>
-
-举个例子，使用 `createVNode` 创建一个简单的虚拟节点：
-```javascript
-import { createVNode } from 'vue';
-
-const vnode = createVNode('div', { class: 'my-div' }, 'Hello, world!');
-console.log(vnode);
-
-```
-输出的 `vnode` 对象可能类似于：
-
-```json
-{
-  "type": "div",
-  "props": { "class": "my-div" },
-  "children": "Hello, world!",
-  "key": null,
-  "el": null,
-  // ...其他内部属性
-}
-```
-
+虚拟节点有许多属性，其中 component 属性是一个比较特殊且重要的属性。
+component 属性主要用于表示当前虚拟节点对应的组件实例。
+在 Vue 3 中，虚拟节点不仅可以表示普通的 HTML 元素，还可以表示自定义组件。
+当虚拟节点表示一个自定义组件时，component 属性将指向该组件的实例。
 
 ## vnode.component
 

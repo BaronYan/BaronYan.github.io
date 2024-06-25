@@ -4,4 +4,7 @@
 
 [函数的作用域链](函数的作用域链.md)
 
-[Promise.reject() 静态方法](./promise/index.md)
+
+
+
+[Promise](./promise/index.md)

@@ -15,39 +15,34 @@ link: vue3/封装Message组件.md
 
 ## 介绍
 
-createVNode 函数是 Vue 3 中用于创建虚拟节点（VNode）的核心函数之一。
+`createVNode` 函数是 Vue 3 中用于创建虚拟节点（VNode）的核心函数之一。
 通过 createVNode，可以手动创建和操作虚拟节点，从而实现更灵活的组件逻辑和渲染控制。
 
 ## 基本用法
 
-createVNode 函数可以接受以下参数：
-
-- `type`: 组件、HTML 标签或异步组件对象。
-- `props`: 节点的属性对象。
-- `children`: 子节点，可以是字符串、数组或对象。
-
-### 语法
 ```javascript
 import { createVNode } from 'vue';
-
 const vnode = createVNode(type, props, children);
 ```
-### 参数说明
-1. type:
-   - 可以是一个组件对象（比如 MyComponent）
-   - 可以是一个 HTML 标签名（比如 'div'）
-   - 可以是一个异步组件对象
-2. props:
-   - 节点的属性对象
-   - 包括类名、样式、事件处理程序等
-3. children:
-   - 子节点，可以是单个 VNode、字符串或一个 VNode 数组
-   - 可以嵌套 VNode，形成树形结构
-   - 可以是一个函数，用于渲染子节点
-   - 可以是一个异步函数，用于异步渲染子节点
-   - 可以是一个 Promise，用于异步渲染子节点
-   - 可以是一个对象，用于渲染子节点
-     - default: 一个函数，用于渲染默认插槽子节点
+createVNode 函数可以接受以下参数：
+
+- `type`: 组件的类型，可以是组件构造函数、动态/异步组件对象或 HTML 标签字符串。
+- `props`: 传递给组件的属性对象。
+- `children`: 虚拟节点的子节点，既可以是单个节点也可以是节点数组，或者是插槽对象。
+
+对于 `createVNode(Message, props, children)`：
+
+- Message 是组件的类型。
+- props 是传递给 Message 组件的属性。
+- children 是 Message 组件的子节点或插槽。
+
+在以下代码中，第三个参数 children 是一个插槽对象 `{ default: ... }`
+```javascript
+const vnode = createVNode(Message, props,
+    isFunction(props.message) || isVNode(props.message) ?
+        { default: isFunction(props.message) ? props.message : () => props.message } : null);
+
+```
 
 
 ### 示例

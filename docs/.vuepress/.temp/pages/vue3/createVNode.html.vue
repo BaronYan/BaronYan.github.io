@@ -5,51 +5,31 @@
 <li><RouteLink to="/vue3/render.html">render函数</RouteLink></li>
 </ul>
 <h2 id="介绍" tabindex="-1"><a class="header-anchor" href="#介绍"><span>介绍</span></a></h2>
-<p>createVNode 函数是 Vue 3 中用于创建虚拟节点（VNode）的核心函数之一。
+<p><code v-pre>createVNode</code> 函数是 Vue 3 中用于创建虚拟节点（VNode）的核心函数之一。
 通过 createVNode，可以手动创建和操作虚拟节点，从而实现更灵活的组件逻辑和渲染控制。</p>
 <h2 id="基本用法" tabindex="-1"><a class="header-anchor" href="#基本用法"><span>基本用法</span></a></h2>
-<p>createVNode 函数可以接受以下参数：</p>
-<ul>
-<li><code v-pre>type</code>: 组件、HTML 标签或异步组件对象。</li>
-<li><code v-pre>props</code>: 节点的属性对象。</li>
-<li><code v-pre>children</code>: 子节点，可以是字符串、数组或对象。</li>
-</ul>
-<h3 id="语法" tabindex="-1"><a class="header-anchor" href="#语法"><span>语法</span></a></h3>
 <div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js" data-title="js"><pre v-pre class="language-javascript"><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> createVNode <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span><span class="token punctuation">;</span></span>
-<span class="line"></span>
 <span class="line"><span class="token keyword">const</span> vnode <span class="token operator">=</span> <span class="token function">createVNode</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> props<span class="token punctuation">,</span> children<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="参数说明" tabindex="-1"><a class="header-anchor" href="#参数说明"><span>参数说明</span></a></h3>
-<ol>
-<li>type:
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div></div></div><p>createVNode 函数可以接受以下参数：</p>
 <ul>
-<li>可以是一个组件对象（比如 MyComponent）</li>
-<li>可以是一个 HTML 标签名（比如 'div'）</li>
-<li>可以是一个异步组件对象</li>
+<li><code v-pre>type</code>: 组件的类型，可以是组件构造函数、动态/异步组件对象或 HTML 标签字符串。</li>
+<li><code v-pre>props</code>: 传递给组件的属性对象。</li>
+<li><code v-pre>children</code>: 虚拟节点的子节点，既可以是单个节点也可以是节点数组，或者是插槽对象。</li>
 </ul>
-</li>
-<li>props:
+<p>对于 <code v-pre>createVNode(Message, props, children)</code>：</p>
 <ul>
-<li>节点的属性对象</li>
-<li>包括类名、样式、事件处理程序等</li>
+<li>Message 是组件的类型。</li>
+<li>props 是传递给 Message 组件的属性。</li>
+<li>children 是 Message 组件的子节点或插槽。</li>
 </ul>
-</li>
-<li>children:
-<ul>
-<li>子节点，可以是单个 VNode、字符串或一个 VNode 数组</li>
-<li>可以嵌套 VNode，形成树形结构</li>
-<li>可以是一个函数，用于渲染子节点</li>
-<li>可以是一个异步函数，用于异步渲染子节点</li>
-<li>可以是一个 Promise，用于异步渲染子节点</li>
-<li>可以是一个对象，用于渲染子节点
-<ul>
-<li>default: 一个函数，用于渲染默认插槽子节点</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h3 id="示例" tabindex="-1"><a class="header-anchor" href="#示例"><span>示例</span></a></h3>
+<p>在以下代码中，第三个参数 children 是一个插槽对象 <code v-pre>{ default: ... }</code></p>
+<div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js" data-title="js"><pre v-pre class="language-javascript"><code><span class="line"><span class="token keyword">const</span> vnode <span class="token operator">=</span> <span class="token function">createVNode</span><span class="token punctuation">(</span>Message<span class="token punctuation">,</span> props<span class="token punctuation">,</span></span>
+<span class="line">    <span class="token function">isFunction</span><span class="token punctuation">(</span>props<span class="token punctuation">.</span>message<span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token function">isVNode</span><span class="token punctuation">(</span>props<span class="token punctuation">.</span>message<span class="token punctuation">)</span> <span class="token operator">?</span></span>
+<span class="line">        <span class="token punctuation">{</span> <span class="token keyword">default</span><span class="token operator">:</span> <span class="token function">isFunction</span><span class="token punctuation">(</span>props<span class="token punctuation">.</span>message<span class="token punctuation">)</span> <span class="token operator">?</span> props<span class="token punctuation">.</span><span class="token function-variable function">message</span> <span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> props<span class="token punctuation">.</span>message <span class="token punctuation">}</span> <span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="示例" tabindex="-1"><a class="header-anchor" href="#示例"><span>示例</span></a></h3>
 <p><strong>创建一个简单的 HTML 元素节点</strong></p>
 <div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js" data-title="js"><pre v-pre class="language-javascript"><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> createVNode<span class="token punctuation">,</span> render <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span><span class="token punctuation">;</span></span>
 <span class="line"></span>
