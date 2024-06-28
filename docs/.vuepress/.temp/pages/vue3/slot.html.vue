@@ -1,0 +1,50 @@
+<template><div><p>在 Vue 3 中，插槽的内容是以函数形式定义的，这样做有几个关键的原因：</p>
+<ol>
+<li><strong>延迟计算</strong>：通过使用函数，插槽内容的计算和渲染可以被延迟到实际需要的时候。这意味着如果插槽内容在创建虚拟节点时不需要被立即渲染，它可以在插槽被访问时才进行计算。这样可以提高性能，尤其是在插槽内容复杂且仅在某些条件下才需要渲染时。</li>
+<li><strong>动态性</strong>：插槽函数允许插槽内容在父组件的状态变化时动态更新。例如，如果插槽内容依赖于父组件的某些数据，使用函数形式可以确保每次渲染时插槽内容都能正确反映最新的状态。</li>
+<li><strong>灵活性</strong>：使用函数可以让插槽内容更加灵活。插槽函数可以接受参数，这样子组件可以向父组件提供数据或事件回调，从而实现复杂的交互逻辑。</li>
+</ol>
+<h3 id="包装虚拟节点为函数的具体原因" tabindex="-1"><a class="header-anchor" href="#包装虚拟节点为函数的具体原因"><span>包装虚拟节点为函数的具体原因</span></a></h3>
+<div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js" data-title="js"><pre v-pre class="language-javascript"><code><span class="line"><span class="token keyword">const</span> vnode <span class="token operator">=</span> <span class="token function">createVNode</span><span class="token punctuation">(</span>Message<span class="token punctuation">,</span> props<span class="token punctuation">,</span></span>
+<span class="line">    <span class="token function">isFunction</span><span class="token punctuation">(</span>props<span class="token punctuation">.</span>message<span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token function">isVNode</span><span class="token punctuation">(</span>props<span class="token punctuation">.</span>message<span class="token punctuation">)</span> <span class="token operator">?</span></span>
+<span class="line">        <span class="token punctuation">{</span> <span class="token keyword">default</span><span class="token operator">:</span> <span class="token function">isFunction</span><span class="token punctuation">(</span>props<span class="token punctuation">.</span>message<span class="token punctuation">)</span> <span class="token operator">?</span> props<span class="token punctuation">.</span><span class="token function-variable function">message</span> <span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> props<span class="token punctuation">.</span>message <span class="token punctuation">}</span> <span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>在你的代码中，虚拟节点被包装为一个函数，以符合 Vue 3 插槽机制的要求：</p>
+<p>如果 <code v-pre>props.message</code> 是一个虚拟节点，而不是一个函数，为了使它能够作为插槽内容传递，
+需要将其包装为一个返回该虚拟节点的函数，即 <code v-pre>() =&gt; props.message</code>。这样可以确保 props.message 作为插槽内容能够被正确处理和渲染。</p>
+<h3 id="具体例子说明" tabindex="-1"><a class="header-anchor" href="#具体例子说明"><span>具体例子说明</span></a></h3>
+<p>假设你有一个 Message 组件，接收一个默认插槽：</p>
+<div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js" data-title="js"><pre v-pre class="language-javascript"><code><span class="line"><span class="token operator">&lt;</span>template<span class="token operator">></span></span>
+<span class="line">  <span class="token operator">&lt;</span>div<span class="token operator">></span></span>
+<span class="line">    <span class="token operator">&lt;</span>slot<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>slot<span class="token operator">></span></span>
+<span class="line">  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span></span>
+<span class="line"><span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">></span></span>
+<span class="line"></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>在父组件中，如果直接传递虚拟节点作为插槽内容：</p>
+<div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js" data-title="js"><pre v-pre class="language-javascript"><code><span class="line"><span class="token keyword">const</span> messageVNode <span class="token operator">=</span> <span class="token function">createVNode</span><span class="token punctuation">(</span><span class="token string">'span'</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">'Hello'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">const</span> vnode <span class="token operator">=</span> <span class="token function">createVNode</span><span class="token punctuation">(</span>Message<span class="token punctuation">,</span> props<span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token function-variable function">default</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> messageVNode <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>这里将虚拟节点 messageVNode 包装成一个函数 <code v-pre>() =&gt; messageVNode</code>，使其符合 Vue 插槽的机制。这样在 Message 组件中，插槽内容可以在需要的时候被调用和渲染。</p>
+<h3 id="代码优化" tabindex="-1"><a class="header-anchor" href="#代码优化"><span>代码优化</span></a></h3>
+<p>让我们重新审视和优化之前的代码，使之更清晰：</p>
+<div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js" data-title="js"><pre v-pre class="language-javascript"><code><span class="line"><span class="token keyword">const</span> vnode <span class="token operator">=</span> <span class="token function">createVNode</span><span class="token punctuation">(</span>Message<span class="token punctuation">,</span> props<span class="token punctuation">,</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token keyword">default</span><span class="token operator">:</span> <span class="token function">isFunction</span><span class="token punctuation">(</span>props<span class="token punctuation">.</span>message<span class="token punctuation">)</span></span>
+<span class="line">        <span class="token operator">?</span> props<span class="token punctuation">.</span>message</span>
+<span class="line">        <span class="token operator">:</span> <span class="token function">isVNode</span><span class="token punctuation">(</span>props<span class="token punctuation">.</span>message<span class="token punctuation">)</span></span>
+<span class="line">            <span class="token operator">?</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> props<span class="token punctuation">.</span>message</span>
+<span class="line">            <span class="token operator">:</span> <span class="token keyword">undefined</span></span>
+<span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>这样明确地处理了不同类型的 <code v-pre>props.message</code>：</p>
+<ul>
+<li>如果 props.message 是一个函数，直接作为插槽内容。</li>
+<li>如果 props.message 是一个虚拟节点，包装成返回虚拟节点的函数。</li>
+<li>如果 props.message 既不是函数也不是虚拟节点，则不传递任何子节点或插槽给 Message 组件（通过 undefined）。</li>
+</ul>
+<p>这确保了插槽内容符合 Vue 3 的插槽机制，并且处理不同类型的 props.message 逻辑清晰明确。</p>
+</div></template>
+
+

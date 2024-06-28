@@ -14,3 +14,6 @@ description: Description of this page
 - [虚拟节点介绍](vnode.md)
 - [虚拟节点的 component 属性](vnode.component.md)
 - [虚拟节点的component.proxy 属性](vnode.component.proxy.md)
+- [插槽](slot.md)
+- [setup语法糖](setup语法糖.md)
+- [函数式组件](函数式组件.md)
