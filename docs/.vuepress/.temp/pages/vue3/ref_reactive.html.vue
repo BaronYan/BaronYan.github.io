@@ -1,0 +1,100 @@
+<template><div><h2 id="ref-和-reactive" tabindex="-1"><a class="header-anchor" href="#ref-和-reactive"><span>ref 和 reactive</span></a></h2>
+<p>Vue 3 引入了Composition API，
+其中 <code v-pre>ref</code> 和 <code v-pre>reactive</code> 是这套API中的两个基本响应式引用类型，
+用于处理组件中的响应式数据。
+它们都是构建 Vue 应用中响应式系统的基础部件，但它们适用于不同的场景，并且在内部实现上也有所不同。</p>
+<ol>
+<li>
+<p><code v-pre>ref</code>：</p>
+<ul>
+<li>主要用于处理基本数据类型（如String、Number、Boolean等）的响应式。</li>
+<li>当将一个基本数据类型包裹在 <code v-pre>ref()</code> 函数中时，Vue内部会通过 <code v-pre>RefImpl</code> 类来处理这个值，使其成为一个响应式对象。</li>
+<li>这个对象拥有 <code v-pre>.value</code> 属性，通过这个属性可以获取到原始值，并在修改该值时保持响应性。</li>
+</ul>
+</li>
+<li>
+<p><code v-pre>reactive</code>：</p>
+<ul>
+<li>用于创建一个响应式的复杂类型数据对象（如Object、Array）。</li>
+<li><code v-pre>reactive</code> 函数内部使用 <code v-pre>ReactiveEffect</code> 类来处理这些复杂类型的数据，使得这些数据的任何嵌套属性变化时都能触发响应。</li>
+<li>与 <code v-pre>ref</code> 创建的响应式对象不同，<code v-pre>reactive</code> 返回的响应式对象，可以直接像操作普通对象一样操作它们，不需要通过 <code v-pre>.value</code> 访问。</li>
+</ul>
+</li>
+</ol>
+<p><strong>结论:</strong></p>
+<p>无论是 <code v-pre>ref</code> 还是 <code v-pre>reactive</code>，它们的内部都是基于Vue的响应式系统实现的，即依赖收集和触发更新的机制。
+它们的核心实现依赖于 <code v-pre>Proxy</code>，是基于ECMAScript 2015的 <code v-pre>Proxy</code> 和 <code v-pre>Reflect</code> 来实现属性的拦截和响应式变化。</p>
+<p><strong>转换机制：</strong>
+在Vue的响应式系统中，<code v-pre>ref</code> 和 <code v-pre>reactive</code> 可以相互转换。</p>
+<ul>
+<li>例如，<code v-pre>ref</code> 对象在被 <code v-pre>reactive</code> 对象引用时，<code v-pre>ref</code> 中的值变动也会触发 <code v-pre>reactive</code> 对象的更新。</li>
+<li>同样，<code v-pre>reactive</code> 对象的某个属性如果是通过 <code v-pre>ref</code> 定义的，该属性在模板中被访问时会自动展开，无需使用 <code v-pre>.value</code> 。</li>
+</ul>
+<p><strong>一致的目的</strong>：
+尽管 <code v-pre>ref</code> 和 <code v-pre>reactive</code> 适用于不同的数据类型，但它们的目的是一致的，即实现数据的响应式，
+让Vue应用的数据流向更加清晰、高效。</p>
+<p><strong>结论</strong>：<code v-pre>ref</code> 和 <code v-pre>reactive</code> 虽然在适用场景和某些内部实现上有所不同，但它们共同为Vue应用的响应式系统提供了强大且灵活的支持，是Vue 3中Composition API的重要组成部分。</p>
+<h2 id="shallowref" tabindex="-1"><a class="header-anchor" href="#shallowref"><span>shallowRef</span></a></h2>
+<p>在 Vue 3 中，ref 和 shallowRef 都用于创建响应式的引用对象，但它们之间有一些关键的区别：</p>
+<ol>
+<li><code v-pre>ref</code>：
+<ul>
+<li><code v-pre>ref</code> 可以用来创建包含基本类型值（如数字、字符串、布尔值）的响应式引用对象。</li>
+<li>当给 <code v-pre>ref</code> 分配一个新值时，Vue 会确保这个新值是响应式的，并触发视图更新。</li>
+<li>通过 <code v-pre>[*].value</code> 来访问和修改其值。</li>
+</ul>
+</li>
+<li><code v-pre>shallowRef</code>：
+<ul>
+<li><code v-pre>shallowRef</code> 与 <code v-pre>ref</code> 类似，但它主要用于创建包含对象类型值的浅响应式引用对象。</li>
+<li>当给 <code v-pre>shallowRef</code> 分配一个新对象时，只有该对象本身是响应式的，而不会递归地将其属性转换为响应式。</li>
+</ul>
+</li>
+</ol>
+<div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js" data-title="js"><pre v-pre class="language-javascript"><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> shallowRef <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">count</span><span class="token operator">:</span> <span class="token number">0</span> <span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">const</span> state <span class="token operator">=</span> <span class="token function">shallowRef</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="token comment">// 使用</span></span>
+<span class="line">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>state<span class="token punctuation">.</span>value<span class="token punctuation">.</span>count<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出：0</span></span>
+<span class="line">state<span class="token punctuation">.</span>value<span class="token punctuation">.</span>count<span class="token operator">++</span><span class="token punctuation">;</span> <span class="token comment">// 不会触发视图更新</span></span>
+<span class="line"></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>在这个例子中，<code v-pre>state.value</code> 是一个浅响应式的对象引用，即 <code v-pre>state.value</code> 是响应式的，但是 <code v-pre>state.value.count</code> 并不是响应式的，修改 <code v-pre>count</code> 不会触发视图更新。</p>
+<p>选择使用 <code v-pre>ref</code> 还是 <code v-pre>shallowRef</code> 取决于你的需求：</p>
+<ul>
+<li>如果你需要确保对象内部的所有属性都是响应式的，应该使用 <code v-pre>ref</code>。</li>
+<li>如果你只需要对象本身是响应式的，并且不希望递归地转换其内部属性为响应式，可以使用 <code v-pre>shallowRef</code>。</li>
+</ul>
+<p>总之，<code v-pre>ref</code> 和 <code v-pre>shallowRef</code> 提供了根据具体需求来选择响应式处理的灵活性，确保你可以高效地管理和使用 Vue 3 中的响应式数据。</p>
+<h2 id="shallowreactive" tabindex="-1"><a class="header-anchor" href="#shallowreactive"><span>shallowReactive</span></a></h2>
+<p>在Vue 3中，<code v-pre>shallowReactive</code> 和 <code v-pre>reactive</code> 是用来创建响应式对象的两种方式，它们的主要区别在于<span class="bg-yellow-200">如何处理对象的嵌套</span>。</p>
+<ol>
+<li><code v-pre>reactive</code>：
+<ul>
+<li><code v-pre>reactive</code> 函数<span class="bg-yellow-200">会递归地将对象及其嵌套属性转换为响应式对象</span>。这意味着对象的所有嵌套属性都会被转换为响应式的，可以监听到其内部属性的变化。</li>
+</ul>
+</li>
+<li><code v-pre>shallowReactive</code>：
+<ul>
+<li><code v-pre>shallowReactive</code> 函数<span class="bg-yellow-200">只会将对象的顶层属性转换为响应式对象，而不会递归转换嵌套属性</span>。这意味着对象内部的嵌套属性不会被转换为响应式，只有顶层属性是响应式的。<div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js" data-title="js"><pre v-pre class="language-javascript"><code><span class="line">    <span class="token keyword">import</span> <span class="token punctuation">{</span> shallowReactive <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token keyword">const</span> state <span class="token operator">=</span> <span class="token function">shallowReactive</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
+<span class="line">       <span class="token literal-property property">nested</span><span class="token operator">:</span> <span class="token punctuation">{</span></span>
+<span class="line">           <span class="token literal-property property">count</span><span class="token operator">:</span> <span class="token number">0</span></span>
+<span class="line">       <span class="token punctuation">}</span></span>
+<span class="line">   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>在这个例子中，<code v-pre>state.nested</code> 不是响应式的，只有 <code v-pre>state</code> 的顶层属性是响应式的。这意味着当 <code v-pre>state.nested.count</code> 变化时，不会触发视图更新。</li>
+</ul>
+</li>
+</ol>
+<p>选择使用 <code v-pre>shallowReactive</code> 还是 <code v-pre>reactive</code> 取决于你的数据结构和需要：</p>
+<ul>
+<li>如果你需要监听对象的所有嵌套属性的变化，应该使用 <code v-pre>reactive</code>。</li>
+<li>如果你只需要监听对象的顶层属性的变化，可以使用 <code v-pre>shallowReactive</code>，这样可以提高性能并减少不必要的响应式处理。</li>
+</ul>
+<p>总之，<code v-pre>shallowReactive</code> 和 <code v-pre>reactive</code> 提供了灵活的选择，使你可以根据具体需求来决定如何创建响应式对象。</p>
+</div></template>
+
+

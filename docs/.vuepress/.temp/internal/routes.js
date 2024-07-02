@@ -1,4 +1,4 @@
-export const redirects = JSON.parse("{}")
+export const redirects = JSON.parse("{\"/vue3/ref&reactive.html\":\"/vue3/ref_reactive.html\"}")
 
 export const routes = Object.fromEntries([
   ["/", { loader: () => import(/* webpackChunkName: "index.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/index.html.js"), meta: {"title":"Home"} }],
@@ -12,6 +12,21 @@ export const routes = Object.fromEntries([
   ["/Vuejs%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/", { loader: () => import(/* webpackChunkName: "Vuejs的设计与实现_index.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/Vuejs的设计与实现/index.html.js"), meta: {"title":""} }],
   ["/css/", { loader: () => import(/* webpackChunkName: "css_index.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/css/index.html.js"), meta: {"title":"Home"} }],
   ["/css/margin.inline.html", { loader: () => import(/* webpackChunkName: "css_margin.inline.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/css/margin.inline.html.js"), meta: {"title":"margin-inline"} }],
+  ["/vue3/createVNode.html", { loader: () => import(/* webpackChunkName: "vue3_createVNode.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/vue3/createVNode.html.js"), meta: {"title":"createVNode"} }],
+  ["/vue3/defineExpose%E7%94%A8%E6%B3%95.html", { loader: () => import(/* webpackChunkName: "vue3_defineExpose用法.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/vue3/defineExpose用法.html.js"), meta: {"title":""} }],
+  ["/vue3/errors.html", { loader: () => import(/* webpackChunkName: "vue3_errors.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/vue3/errors.html.js"), meta: {"title":""} }],
+  ["/vue3/", { loader: () => import(/* webpackChunkName: "vue3_index.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/vue3/index.html.js"), meta: {"title":"vue3"} }],
+  ["/vue3/ref_reactive.html", { loader: () => import(/* webpackChunkName: "vue3_ref_reactive.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/vue3/ref_reactive.html.js"), meta: {"title":""} }],
+  ["/vue3/render.html", { loader: () => import(/* webpackChunkName: "vue3_render.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/vue3/render.html.js"), meta: {"title":"render 函数"} }],
+  ["/vue3/setup%E8%AF%AD%E6%B3%95%E7%B3%96.html", { loader: () => import(/* webpackChunkName: "vue3_setup语法糖.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/vue3/setup语法糖.html.js"), meta: {"title":""} }],
+  ["/vue3/slot.html", { loader: () => import(/* webpackChunkName: "vue3_slot.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/vue3/slot.html.js"), meta: {"title":""} }],
+  ["/vue3/vnode.component.html", { loader: () => import(/* webpackChunkName: "vue3_vnode.component.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/vue3/vnode.component.html.js"), meta: {"title":"vnode.component"} }],
+  ["/vue3/vnode.component.proxy.html", { loader: () => import(/* webpackChunkName: "vue3_vnode.component.proxy.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/vue3/vnode.component.proxy.html.js"), meta: {"title":"vnode.component.proxy"} }],
+  ["/vue3/vnode.html", { loader: () => import(/* webpackChunkName: "vue3_vnode.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/vue3/vnode.html.js"), meta: {"title":""} }],
+  ["/vue3/vnode_vnode.component.html", { loader: () => import(/* webpackChunkName: "vue3_vnode_vnode.component.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/vue3/vnode_vnode.component.html.js"), meta: {"title":"vnode.component"} }],
+  ["/vue3/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BB%84%E4%BB%B6.html", { loader: () => import(/* webpackChunkName: "vue3_函数式组件.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/vue3/函数式组件.html.js"), meta: {"title":""} }],
+  ["/vue3/%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A.html", { loader: () => import(/* webpackChunkName: "vue3_名词解释.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/vue3/名词解释.html.js"), meta: {"title":""} }],
+  ["/vue3/%E5%B0%81%E8%A3%85Message%E7%BB%84%E4%BB%B6.html", { loader: () => import(/* webpackChunkName: "vue3_封装Message组件.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/vue3/封装Message组件.html.js"), meta: {"title":"封装一个 Message 组件"} }],
   ["/posts/archive1.html", { loader: () => import(/* webpackChunkName: "posts_archive1.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/posts/archive1.html.js"), meta: {"_blog":{"title":"Archive Article1","author":"","date":"1998-01-01T00:00:00.000Z","category":["History"],"tag":["WWI"],"excerpt":"\n<h2>Heading 2</h2>\n<p>Here is the content.</p>\n<h3>Heading 3</h3>\n<p>Here is the content.</p>\n"},"title":"Archive Article1"} }],
   ["/posts/archive2.html", { loader: () => import(/* webpackChunkName: "posts_archive2.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/posts/archive2.html.js"), meta: {"_blog":{"title":"Archive Article2","author":"","date":"1998-01-02T00:00:00.000Z","category":["History"],"tag":["WWII"],"excerpt":"\n<h2>Heading 2</h2>\n<p>Here is the content.</p>\n<h3>Heading 3</h3>\n<p>Here is the content.</p>\n"},"title":"Archive Article2"} }],
   ["/posts/article1.html", { loader: () => import(/* webpackChunkName: "posts_article1.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/posts/article1.html.js"), meta: {"_blog":{"title":"Article 1","author":"","date":"2022-01-01T00:00:00.000Z","category":["CategoryA"],"tag":["tag A","tag B"],"excerpt":"\n<h2>Heading 2</h2>\n<p>Here is the content.</p>\n<h3>Heading 3</h3>\n<p>Here is the content.</p>\n"},"title":"Article 1"} }],
@@ -28,19 +43,8 @@ export const routes = Object.fromEntries([
   ["/posts/article9.html", { loader: () => import(/* webpackChunkName: "posts_article9.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/posts/article9.html.js"), meta: {"_blog":{"title":"Article 9","author":"","date":"2022-01-09T00:00:00.000Z","category":["CategoryA","CategoryB"],"tag":["tag C","tag D"],"excerpt":"\n<h2>Heading 2</h2>\n<p>Here is the content.</p>\n<h3>Heading 3</h3>\n<p>Here is the content.</p>\n"},"title":"Article 9"} }],
   ["/posts/sticky.html", { loader: () => import(/* webpackChunkName: "posts_sticky.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/posts/sticky.html.js"), meta: {"_blog":{"title":"Sticky Article","author":"","date":"2021-01-01T00:00:00.000Z","category":["CategoryC"],"tag":["tag E"],"excerpt":"<p>A sticky article demo.</p>"},"title":"Sticky Article"} }],
   ["/posts/sticky2.html", { loader: () => import(/* webpackChunkName: "posts_sticky2.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/posts/sticky2.html.js"), meta: {"_blog":{"title":"Sticky Article with Higher Priority","author":"","date":"2020-01-01T00:00:00.000Z","category":["CategoryC"],"tag":["tag E"],"excerpt":"\n<p>Excerpt information which is added manually.</p>\n"},"title":"Sticky Article with Higher Priority"} }],
-  ["/vue3/createVNode.html", { loader: () => import(/* webpackChunkName: "vue3_createVNode.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/vue3/createVNode.html.js"), meta: {"title":"createVNode"} }],
-  ["/vue3/errors.html", { loader: () => import(/* webpackChunkName: "vue3_errors.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/vue3/errors.html.js"), meta: {"title":""} }],
-  ["/vue3/", { loader: () => import(/* webpackChunkName: "vue3_index.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/vue3/index.html.js"), meta: {"title":"vue3"} }],
-  ["/vue3/render.html", { loader: () => import(/* webpackChunkName: "vue3_render.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/vue3/render.html.js"), meta: {"title":"render 函数"} }],
-  ["/vue3/setup%E8%AF%AD%E6%B3%95%E7%B3%96.html", { loader: () => import(/* webpackChunkName: "vue3_setup语法糖.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/vue3/setup语法糖.html.js"), meta: {"title":""} }],
-  ["/vue3/slot.html", { loader: () => import(/* webpackChunkName: "vue3_slot.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/vue3/slot.html.js"), meta: {"title":""} }],
-  ["/vue3/vnode.component.html", { loader: () => import(/* webpackChunkName: "vue3_vnode.component.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/vue3/vnode.component.html.js"), meta: {"title":"vnode.component"} }],
-  ["/vue3/vnode.component.proxy.html", { loader: () => import(/* webpackChunkName: "vue3_vnode.component.proxy.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/vue3/vnode.component.proxy.html.js"), meta: {"title":"vnode.component.proxy"} }],
-  ["/vue3/vnode.html", { loader: () => import(/* webpackChunkName: "vue3_vnode.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/vue3/vnode.html.js"), meta: {"title":""} }],
-  ["/vue3/vnode_vnode.component.html", { loader: () => import(/* webpackChunkName: "vue3_vnode_vnode.component.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/vue3/vnode_vnode.component.html.js"), meta: {"title":"vnode.component"} }],
-  ["/vue3/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BB%84%E4%BB%B6.html", { loader: () => import(/* webpackChunkName: "vue3_函数式组件.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/vue3/函数式组件.html.js"), meta: {"title":""} }],
-  ["/vue3/%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A.html", { loader: () => import(/* webpackChunkName: "vue3_名词解释.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/vue3/名词解释.html.js"), meta: {"title":""} }],
-  ["/vue3/%E5%B0%81%E8%A3%85Message%E7%BB%84%E4%BB%B6.html", { loader: () => import(/* webpackChunkName: "vue3_封装Message组件.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/vue3/封装Message组件.html.js"), meta: {"title":"封装一个 Message 组件"} }],
+  ["/JavaScript/base/", { loader: () => import(/* webpackChunkName: "JavaScript_base_index.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/JavaScript/base/index.html.js"), meta: {"title":""} }],
+  ["/JavaScript/dom/", { loader: () => import(/* webpackChunkName: "JavaScript_dom_index.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/JavaScript/dom/index.html.js"), meta: {"title":""} }],
   ["/JavaScript/promise/", { loader: () => import(/* webpackChunkName: "JavaScript_promise_index.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/JavaScript/promise/index.html.js"), meta: {"title":""} }],
   ["/JavaScript/promise/promise.html", { loader: () => import(/* webpackChunkName: "JavaScript_promise_promise.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/JavaScript/promise/promise.html.js"), meta: {"title":""} }],
   ["/JavaScript/promise/%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95.html", { loader: () => import(/* webpackChunkName: "JavaScript_promise_静态方法.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/JavaScript/promise/静态方法.html.js"), meta: {"title":""} }],
@@ -61,3 +65,20 @@ export const routes = Object.fromEntries([
   ["/article/", { loader: () => import(/* webpackChunkName: "article_index.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/article/index.html.js"), meta: {"title":"Articles"} }],
   ["/timeline/", { loader: () => import(/* webpackChunkName: "timeline_index.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/timeline/index.html.js"), meta: {"title":"Timeline"} }],
 ]);
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updateRoutes) {
+    __VUE_HMR_RUNTIME__.updateRoutes(routes)
+  }
+  if (__VUE_HMR_RUNTIME__.updateRedirects) {
+    __VUE_HMR_RUNTIME__.updateRedirects(redirects)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ routes, redirects }) => {
+    __VUE_HMR_RUNTIME__.updateRoutes(routes)
+    __VUE_HMR_RUNTIME__.updateRedirects(redirects)
+  })
+}
