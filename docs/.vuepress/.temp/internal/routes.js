@@ -43,8 +43,8 @@ export const routes = Object.fromEntries([
   ["/posts/article9.html", { loader: () => import(/* webpackChunkName: "posts_article9.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/posts/article9.html.js"), meta: {"_blog":{"title":"Article 9","author":"","date":"2022-01-09T00:00:00.000Z","category":["CategoryA","CategoryB"],"tag":["tag C","tag D"],"excerpt":"\n<h2>Heading 2</h2>\n<p>Here is the content.</p>\n<h3>Heading 3</h3>\n<p>Here is the content.</p>\n"},"title":"Article 9"} }],
   ["/posts/sticky.html", { loader: () => import(/* webpackChunkName: "posts_sticky.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/posts/sticky.html.js"), meta: {"_blog":{"title":"Sticky Article","author":"","date":"2021-01-01T00:00:00.000Z","category":["CategoryC"],"tag":["tag E"],"excerpt":"<p>A sticky article demo.</p>"},"title":"Sticky Article"} }],
   ["/posts/sticky2.html", { loader: () => import(/* webpackChunkName: "posts_sticky2.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/posts/sticky2.html.js"), meta: {"_blog":{"title":"Sticky Article with Higher Priority","author":"","date":"2020-01-01T00:00:00.000Z","category":["CategoryC"],"tag":["tag E"],"excerpt":"\n<p>Excerpt information which is added manually.</p>\n"},"title":"Sticky Article with Higher Priority"} }],
-  ["/JavaScript/base/", { loader: () => import(/* webpackChunkName: "JavaScript_base_index.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/JavaScript/base/index.html.js"), meta: {"title":""} }],
   ["/JavaScript/dom/", { loader: () => import(/* webpackChunkName: "JavaScript_dom_index.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/JavaScript/dom/index.html.js"), meta: {"title":""} }],
+  ["/JavaScript/base/", { loader: () => import(/* webpackChunkName: "JavaScript_base_index.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/JavaScript/base/index.html.js"), meta: {"title":""} }],
   ["/JavaScript/promise/", { loader: () => import(/* webpackChunkName: "JavaScript_promise_index.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/JavaScript/promise/index.html.js"), meta: {"title":""} }],
   ["/JavaScript/promise/promise.html", { loader: () => import(/* webpackChunkName: "JavaScript_promise_promise.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/JavaScript/promise/promise.html.js"), meta: {"title":""} }],
   ["/JavaScript/promise/%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95.html", { loader: () => import(/* webpackChunkName: "JavaScript_promise_静态方法.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/JavaScript/promise/静态方法.html.js"), meta: {"title":""} }],
@@ -65,20 +65,3 @@ export const routes = Object.fromEntries([
   ["/article/", { loader: () => import(/* webpackChunkName: "article_index.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/article/index.html.js"), meta: {"title":"Articles"} }],
   ["/timeline/", { loader: () => import(/* webpackChunkName: "timeline_index.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/timeline/index.html.js"), meta: {"title":"Timeline"} }],
 ]);
-
-if (import.meta.webpackHot) {
-  import.meta.webpackHot.accept()
-  if (__VUE_HMR_RUNTIME__.updateRoutes) {
-    __VUE_HMR_RUNTIME__.updateRoutes(routes)
-  }
-  if (__VUE_HMR_RUNTIME__.updateRedirects) {
-    __VUE_HMR_RUNTIME__.updateRedirects(redirects)
-  }
-}
-
-if (import.meta.hot) {
-  import.meta.hot.accept(({ routes, redirects }) => {
-    __VUE_HMR_RUNTIME__.updateRoutes(routes)
-    __VUE_HMR_RUNTIME__.updateRedirects(redirects)
-  })
-}

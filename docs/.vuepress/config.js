@@ -81,6 +81,15 @@ export default defineUserConfig({
                             link: 'vnode.component.proxy.md',
                         }
                     ]
+                },
+                {
+                    text: '组件',
+                    children: [
+                        {
+                            text: '函数式组件',
+                            link: '封装Message组件.md',
+                        }
+                    ]
                 }
             ]
         },
