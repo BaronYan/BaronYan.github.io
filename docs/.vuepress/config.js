@@ -90,7 +90,16 @@ export default defineUserConfig({
                             link: '封装Message组件.md',
                         }
                     ]
-                }
+                },
+                {
+                    text: '过渡和动画',
+                    children: [
+                        {
+                            text: '函数式组件',
+                            link: '封装Message组件.md',
+                        }
+                    ]
+                },
             ]
         },
         postcss: {
