@@ -87,7 +87,7 @@ export default defineUserConfig({
                     children: [
                         {
                             text: '函数式组件',
-                            link: '封装Message.md',
+                            link: '封装message.md',
                         }
                     ]
                 },
