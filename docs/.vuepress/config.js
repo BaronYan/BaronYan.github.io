@@ -15,35 +15,51 @@ export default defineUserConfig({
         logo: 'https://vuejs.press/images/hero.png',
 
         navbar: [
-            '/',
             {
-                text: 'JavaScript',
+                text: '首页',
+                link: '/'
+            },
+            {
+                text: '前端技术',
                 children: [
-                    {
-                        text: '基础知识',
-                        link: '/JavaScript/base/',
-                    },
                     {
                         text: 'JavaScript',
                         link: '/JavaScript/',
                     },
                     {
-                        text: 'dom',
-                        link: '/JavaScript/dom/',
+                        text: 'CSS',
+                        link: '/css/',
+                    },
+                    {
+                        text: 'Vue3',
+                        link: '/vue3/',
+                    },
+                    {
+                        text: 'Vue的设计与实现',
+                        link: '/Vuejs的设计与实现/',
                     }
                 ]
             },
             {
-                text: 'Vue3',
-                link: '/vue3/',
-            },
-            {
-                text: 'Vue的设计与实现',
-                link: '/Vuejs的设计与实现/',
+                text: '后端技术',
+                children: [
+                    {
+                        text: 'PHP',
+                        link: '/php/',
+                    },
+                    {
+                        text: 'Laravel',
+                        link: '/laravel/',
+                    }
+                ]
             },
             {
                 text: 'Category',
                 link: '/category/',
+            },
+            {
+                text: 'HTML',
+                link: '/html/',
             },
             {
                 text: 'Tag',
@@ -100,6 +116,87 @@ export default defineUserConfig({
                         }
                     ]
                 },
+            ],
+            '/JavaScript/': [
+                {
+                    text: '基础知识',
+                    children: [
+                        {
+                            text: 'ref&reactive',
+                            link: 'ref&reactive.md',
+                        }
+                    ]
+                },
+                {
+                    text: 'dom',
+                    children: [
+                        {
+                            text: 'ref&reactive',
+                            link: 'ref&reactive.md',
+                        }
+                    ]
+                },
+                {
+                    text: '字符串',
+                    children: [
+                        {
+                            text: '字符串截取导致的BUG',
+                            link: 'global_objects/字符串截取导致的BUG.md',
+                        }
+                    ]
+                }
+            ],
+            '/html/': [
+                {
+                    text: '基础知识',
+                    children: [
+                        {
+                            text: 'ref&reactive',
+                            link: 'ref&reactive.md',
+                        }
+                    ]
+                }
+            ],
+            '/css/':[
+                {
+                    text: '基础知识',
+                    children: [
+                        {
+                            text: '单位和函数',
+                            link: '单位和函数.md',
+                        },
+                        {
+                            text: 'line-height',
+                            link: 'line_height.md',
+                        }
+                    ]
+                }
+            ],
+            '/php/': [
+                {
+                    text: '基础知识',
+                    children: [
+                        {
+                            text: '基础语法',
+                            link: '语法.md',
+                        },
+                        {
+                            text: '面向对象',
+                            link: '面向对象.md',
+                        }
+                    ]
+                }
+            ],
+            '/laravel/': [
+                {
+                    text: '基础知识',
+                    children: [
+                        {
+                            text: '表单验证',
+                            link: '表单验证.md',
+                        }
+                    ]
+                }
             ]
         },
         postcss: {

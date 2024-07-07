@@ -1,0 +1,15 @@
+
+
+PHP 是一种流行的通用脚本语言，特别适用于网络开发。 PHP 快速、灵活、实用，从您的博客到世界上最流行的网站，PHP 都能为其提供支持。
+
+
+## 预定义常量
+
+- [内核预定义常量](https://www.php.net/manual/zh/reserved.constants.php) 这些常量在 PHP 的内核中定义。它包含 PHP、Zend 引擎和 SAPI 模块。
+- [标准预定义常量](https://www.php.net/manual/zh/reserved.constants.php#reserved.constants.standard) 核心扩展中的所有常量都默认在 PHP 中定义。
+- [魔术常量](https://www.php.net/manual/zh/language.constants.magic.php) 有九个魔术常量,它们的值随着它们在代码中的位置改变而改变。
+- [核心扩展库](https://www.php.net/manual/zh/extensions.membership.php#extensions.membership.core) 并非真正的扩展库，它们属于 PHP 内核的一部分，不能通过编译选项将其排除。
+- [绑定的扩展库](https://www.php.net/manual/zh/extensions.membership.php#extensions.membership.bundled) 绑定在 PHP 发行包中
+- [外部扩展库](https://www.php.net/manual/zh/extensions.membership.php#extensions.membership.external) 这些扩展库已经包含在 PHP 中但是需要编译它们才能使用，并且可能需要额外的扩展库。
+- [PECL 扩展库](https://www.php.net/manual/zh/extensions.membership.php#extensions.membership.pecl) [PECL](https://pecl.php.net/) 是一个 PHP 扩展库，提供所有已知扩展的目录以及下载和开发 PHP 扩展的托管设施。 PECL 使用的打包和发布系统与其姊妹库 PEAR 共享。
+

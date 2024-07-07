@@ -1,4 +1,9 @@
-<template><div><p>This is the content of home page. Check <a href="https://vuejs.press/reference/default-theme/frontmatter.html#home-page" target="_blank" rel="noopener noreferrer">Home Page Docs</a> for more details.</p>
+<template><div><ul>
+<li><RouteLink to="/php/">php</RouteLink></li>
+<li><RouteLink to="/js/">js</RouteLink></li>
+<li><RouteLink to="/css/">css</RouteLink></li>
+<li><RouteLink to="/vue3/">vue3</RouteLink></li>
+</ul>
 </div></template>
 
 
