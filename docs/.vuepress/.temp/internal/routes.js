@@ -19,6 +19,7 @@ export const routes = Object.fromEntries([
   ["/html/%E5%A2%9E%E5%BC%BA%E7%BD%91%E9%A1%B5%E5%86%85%E5%AE%B9%E7%9A%84%E5%8F%AF%E8%AE%BF%E9%97%AE%E6%80%A7.html", { loader: () => import(/* webpackChunkName: "html_增强网页内容的可访问性.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/html/增强网页内容的可访问性.html.js"), meta: {"title":""} }],
   ["/laravel/", { loader: () => import(/* webpackChunkName: "laravel_index.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/laravel/index.html.js"), meta: {"title":""} }],
   ["/laravel/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81.html", { loader: () => import(/* webpackChunkName: "laravel_表单验证.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/laravel/表单验证.html.js"), meta: {"title":""} }],
+  ["/linux/", { loader: () => import(/* webpackChunkName: "linux_index.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/linux/index.html.js"), meta: {"title":""} }],
   ["/php/", { loader: () => import(/* webpackChunkName: "php_index.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/php/index.html.js"), meta: {"title":""} }],
   ["/php/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1.html", { loader: () => import(/* webpackChunkName: "php_类与对象.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/php/类与对象.html.js"), meta: {"title":""} }],
   ["/php/%E7%B3%BB%E7%BB%9F%E5%B8%B8%E9%87%8F.html", { loader: () => import(/* webpackChunkName: "php_系统常量.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/php/系统常量.html.js"), meta: {"title":""} }],
@@ -82,3 +83,20 @@ export const routes = Object.fromEntries([
   ["/article/", { loader: () => import(/* webpackChunkName: "article_index.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/article/index.html.js"), meta: {"title":"Articles"} }],
   ["/timeline/", { loader: () => import(/* webpackChunkName: "timeline_index.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/timeline/index.html.js"), meta: {"title":"Timeline"} }],
 ]);
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updateRoutes) {
+    __VUE_HMR_RUNTIME__.updateRoutes(routes)
+  }
+  if (__VUE_HMR_RUNTIME__.updateRedirects) {
+    __VUE_HMR_RUNTIME__.updateRedirects(redirects)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ routes, redirects }) => {
+    __VUE_HMR_RUNTIME__.updateRoutes(routes)
+    __VUE_HMR_RUNTIME__.updateRedirects(redirects)
+  })
+}

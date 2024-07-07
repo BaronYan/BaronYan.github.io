@@ -54,6 +54,15 @@ export default defineUserConfig({
                 ]
             },
             {
+                text: '运维',
+                children:[
+                    {
+                        text: 'Linux',
+                        link: '/linux/',
+                    },
+                ]
+            },
+            {
                 text: 'Category',
                 link: '/category/',
             },
