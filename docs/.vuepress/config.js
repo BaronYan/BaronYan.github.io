@@ -60,6 +60,15 @@ export default defineUserConfig({
                         text: 'Linux',
                         link: '/linux/',
                     },
+                ],
+            },
+            {
+                text: '基础科学',
+                children:[
+                    {
+                        text: '线性代数',
+                        link: '/xxds/',
+                    },
                 ]
             },
             {
@@ -203,6 +212,17 @@ export default defineUserConfig({
                         {
                             text: '表单验证',
                             link: '表单验证.md',
+                        }
+                    ]
+                }
+            ],
+            '/xxds/':[
+                {
+                    text: '线性代数',
+                    children: [
+                        {
+                            text: '线性代数系统课程',
+                            link: 'index.md',
                         }
                     ]
                 }

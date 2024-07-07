@@ -9,17 +9,16 @@ export const routes = Object.fromEntries([
   ["/JavaScript/%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE.html", { loader: () => import(/* webpackChunkName: "JavaScript_函数的作用域链.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/JavaScript/函数的作用域链.html.js"), meta: {"title":""} }],
   ["/JavaScript/%E5%87%BD%E6%95%B0%E7%9A%84%E5%BD%A2%E5%8F%82.html", { loader: () => import(/* webpackChunkName: "JavaScript_函数的形参.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/JavaScript/函数的形参.html.js"), meta: {"title":""} }],
   ["/JavaScript/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F.html", { loader: () => import(/* webpackChunkName: "JavaScript_正则表达式.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/JavaScript/正则表达式.html.js"), meta: {"title":""} }],
-  ["/Vuejs%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/3.Vue.js%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF.html", { loader: () => import(/* webpackChunkName: "Vuejs的设计与实现_3.Vue.js的设计思路.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/Vuejs的设计与实现/3.Vue.js的设计思路.html.js"), meta: {"title":""} }],
-  ["/Vuejs%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/", { loader: () => import(/* webpackChunkName: "Vuejs的设计与实现_index.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/Vuejs的设计与实现/index.html.js"), meta: {"title":""} }],
   ["/css/", { loader: () => import(/* webpackChunkName: "css_index.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/css/index.html.js"), meta: {"title":""} }],
   ["/css/line_height.html", { loader: () => import(/* webpackChunkName: "css_line_height.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/css/line_height.html.js"), meta: {"title":""} }],
   ["/css/margin.inline.html", { loader: () => import(/* webpackChunkName: "css_margin.inline.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/css/margin.inline.html.js"), meta: {"title":"margin-inline"} }],
   ["/css/%E5%8D%95%E4%BD%8D%E5%92%8C%E5%87%BD%E6%95%B0.html", { loader: () => import(/* webpackChunkName: "css_单位和函数.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/css/单位和函数.html.js"), meta: {"title":""} }],
   ["/html/", { loader: () => import(/* webpackChunkName: "html_index.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/html/index.html.js"), meta: {"title":""} }],
   ["/html/%E5%A2%9E%E5%BC%BA%E7%BD%91%E9%A1%B5%E5%86%85%E5%AE%B9%E7%9A%84%E5%8F%AF%E8%AE%BF%E9%97%AE%E6%80%A7.html", { loader: () => import(/* webpackChunkName: "html_增强网页内容的可访问性.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/html/增强网页内容的可访问性.html.js"), meta: {"title":""} }],
+  ["/Vuejs%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/3.Vue.js%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF.html", { loader: () => import(/* webpackChunkName: "Vuejs的设计与实现_3.Vue.js的设计思路.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/Vuejs的设计与实现/3.Vue.js的设计思路.html.js"), meta: {"title":""} }],
+  ["/Vuejs%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/", { loader: () => import(/* webpackChunkName: "Vuejs的设计与实现_index.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/Vuejs的设计与实现/index.html.js"), meta: {"title":""} }],
   ["/laravel/", { loader: () => import(/* webpackChunkName: "laravel_index.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/laravel/index.html.js"), meta: {"title":""} }],
   ["/laravel/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81.html", { loader: () => import(/* webpackChunkName: "laravel_表单验证.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/laravel/表单验证.html.js"), meta: {"title":""} }],
-  ["/linux/", { loader: () => import(/* webpackChunkName: "linux_index.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/linux/index.html.js"), meta: {"title":""} }],
   ["/php/", { loader: () => import(/* webpackChunkName: "php_index.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/php/index.html.js"), meta: {"title":""} }],
   ["/php/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1.html", { loader: () => import(/* webpackChunkName: "php_类与对象.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/php/类与对象.html.js"), meta: {"title":""} }],
   ["/php/%E7%B3%BB%E7%BB%9F%E5%B8%B8%E9%87%8F.html", { loader: () => import(/* webpackChunkName: "php_系统常量.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/php/系统常量.html.js"), meta: {"title":""} }],
@@ -41,6 +40,8 @@ export const routes = Object.fromEntries([
   ["/posts/article9.html", { loader: () => import(/* webpackChunkName: "posts_article9.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/posts/article9.html.js"), meta: {"_blog":{"title":"Article 9","author":"","date":"2022-01-09T00:00:00.000Z","category":["CategoryA","CategoryB"],"tag":["tag C","tag D"],"excerpt":"\n<h2>Heading 2</h2>\n<p>Here is the content.</p>\n<h3>Heading 3</h3>\n<p>Here is the content.</p>\n"},"title":"Article 9"} }],
   ["/posts/sticky.html", { loader: () => import(/* webpackChunkName: "posts_sticky.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/posts/sticky.html.js"), meta: {"_blog":{"title":"Sticky Article","author":"","date":"2021-01-01T00:00:00.000Z","category":["CategoryC"],"tag":["tag E"],"excerpt":"<p>A sticky article demo.</p>"},"title":"Sticky Article"} }],
   ["/posts/sticky2.html", { loader: () => import(/* webpackChunkName: "posts_sticky2.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/posts/sticky2.html.js"), meta: {"_blog":{"title":"Sticky Article with Higher Priority","author":"","date":"2020-01-01T00:00:00.000Z","category":["CategoryC"],"tag":["tag E"],"excerpt":"\n<p>Excerpt information which is added manually.</p>\n"},"title":"Sticky Article with Higher Priority"} }],
+  ["/linux/", { loader: () => import(/* webpackChunkName: "linux_index.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/linux/index.html.js"), meta: {"title":""} }],
+  ["/JavaScript/base/", { loader: () => import(/* webpackChunkName: "JavaScript_base_index.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/JavaScript/base/index.html.js"), meta: {"title":""} }],
   ["/vue3/createVNode.html", { loader: () => import(/* webpackChunkName: "vue3_createVNode.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/vue3/createVNode.html.js"), meta: {"title":"createVNode"} }],
   ["/vue3/defineExpose%E7%94%A8%E6%B3%95.html", { loader: () => import(/* webpackChunkName: "vue3_defineExpose用法.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/vue3/defineExpose用法.html.js"), meta: {"title":""} }],
   ["/vue3/errors.html", { loader: () => import(/* webpackChunkName: "vue3_errors.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/vue3/errors.html.js"), meta: {"title":""} }],
@@ -58,7 +59,7 @@ export const routes = Object.fromEntries([
   ["/vue3/%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A.html", { loader: () => import(/* webpackChunkName: "vue3_名词解释.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/vue3/名词解释.html.js"), meta: {"title":""} }],
   ["/vue3/%E5%B0%81%E8%A3%85Message%E7%BB%84%E4%BB%B6.html", { loader: () => import(/* webpackChunkName: "vue3_封装Message组件.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/vue3/封装Message组件.html.js"), meta: {"title":"封装一个 Message 组件"} }],
   ["/vue3/%E5%B0%81%E8%A3%85message.html", { loader: () => import(/* webpackChunkName: "vue3_封装message.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/vue3/封装message.html.js"), meta: {"title":"封装一个 Message 组件"} }],
-  ["/JavaScript/base/", { loader: () => import(/* webpackChunkName: "JavaScript_base_index.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/JavaScript/base/index.html.js"), meta: {"title":""} }],
+  ["/xxds/", { loader: () => import(/* webpackChunkName: "xxds_index.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/xxds/index.html.js"), meta: {"title":""} }],
   ["/JavaScript/dom/", { loader: () => import(/* webpackChunkName: "JavaScript_dom_index.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/JavaScript/dom/index.html.js"), meta: {"title":""} }],
   ["/JavaScript/global_objects/array.html", { loader: () => import(/* webpackChunkName: "JavaScript_global_objects_array.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/JavaScript/global_objects/array.html.js"), meta: {"title":""} }],
   ["/JavaScript/global_objects/objects.html", { loader: () => import(/* webpackChunkName: "JavaScript_global_objects_objects.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/JavaScript/global_objects/objects.html.js"), meta: {"title":""} }],
@@ -83,20 +84,3 @@ export const routes = Object.fromEntries([
   ["/article/", { loader: () => import(/* webpackChunkName: "article_index.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/article/index.html.js"), meta: {"title":"Articles"} }],
   ["/timeline/", { loader: () => import(/* webpackChunkName: "timeline_index.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/timeline/index.html.js"), meta: {"title":"Timeline"} }],
 ]);
-
-if (import.meta.webpackHot) {
-  import.meta.webpackHot.accept()
-  if (__VUE_HMR_RUNTIME__.updateRoutes) {
-    __VUE_HMR_RUNTIME__.updateRoutes(routes)
-  }
-  if (__VUE_HMR_RUNTIME__.updateRedirects) {
-    __VUE_HMR_RUNTIME__.updateRedirects(redirects)
-  }
-}
-
-if (import.meta.hot) {
-  import.meta.hot.accept(({ routes, redirects }) => {
-    __VUE_HMR_RUNTIME__.updateRoutes(routes)
-    __VUE_HMR_RUNTIME__.updateRedirects(redirects)
-  })
-}
