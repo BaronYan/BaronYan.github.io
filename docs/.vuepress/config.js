@@ -222,6 +222,11 @@ export default defineUserConfig({
                             text: '面向对象',
                             link: '面向对象.md',
                         }
+                        ,
+                        {
+                            text: '类型转换',
+                            link: '类型转换.md',
+                        }
                     ]
                 },
                 {
