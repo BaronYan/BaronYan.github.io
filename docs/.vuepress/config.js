@@ -20,6 +20,15 @@ export default defineUserConfig({
                 link: '/'
             },
             {
+                text: '知道',
+                children:[
+                    {
+                        text: '基础',
+                        link: '/base/',
+                    },
+                ]
+            },
+            {
                 text: '前端技术',
                 children: [
                     {
@@ -89,6 +98,17 @@ export default defineUserConfig({
             },
         ],
         sidebar: {
+            '/base/':[
+                {
+                    text: '基础知识',
+                    children: [
+                        {
+                            text: 'webView',
+                            link: 'webview.md',
+                        }
+                    ]
+                },
+            ],
             '/vue3/': [
                 {
                     text: '基础知识',
@@ -203,6 +223,19 @@ export default defineUserConfig({
                             link: '面向对象.md',
                         }
                     ]
+                },
+                {
+                    text: '类和对象',
+                    children: [
+                        {
+                            text: '静态类',
+                            link: '静态类.md',
+                        },
+                        {
+                            text: 'implements 关键字',
+                            link: 'implements.md',
+                        }
+                    ]
                 }
             ],
             '/laravel/': [
@@ -212,6 +245,24 @@ export default defineUserConfig({
                         {
                             text: '表单验证',
                             link: '表单验证.md',
+                        }
+                    ]
+                },
+                {
+                    text: '套件',
+                    children: [
+                        {
+                            text: 'precognition',
+                            link: 'packages.md',
+                        }
+                    ]
+                },
+                {
+                    text: '进阶',
+                    children: [
+                        {
+                            text: 'Cache 缓存',
+                            link: 'cache.md',
                         }
                     ]
                 }

@@ -1,7 +1,7 @@
 <template><div><p><a href="https://laravel.com/docs/11.x/requests" target="_blank" rel="noopener noreferrer">requests</a></p>
 <p>Laravel 的 <code v-pre>Illuminate\Http\Request</code> 类提供了一种面向对象的方式，可以与应用程序正在处理的当前 HTTP 请求进行交互，并检索与请求一起提交的输入、cookie 和文件。</p>
 <p><a href="https://laravel.com/docs/11.x/validation#creating-form-requests" target="_blank" rel="noopener noreferrer">表单请求验证</a> 表单请求是封装了自己的验证和授权逻辑的自定义请求类。</p>
-<h2 id="概述" tabindex="-1"><a class="header-anchor" href="#概述"><span>概述</span></a></h2>
+<h2 id="表单请求验证" tabindex="-1"><a class="header-anchor" href="#表单请求验证"><span>表单请求验证</span></a></h2>
 <p>创建表单请求类的命令如下所示：</p>
 <div class="language-bash line-numbers-mode" data-highlighter="prismjs" data-ext="sh" data-title="sh"><pre v-pre class="language-bash"><code><span class="line">php artisan make:request StorePostRequest</span>
 <span class="line"></span></code></pre>
