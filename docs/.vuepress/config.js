@@ -226,6 +226,10 @@ export default defineUserConfig({
                         {
                             text: '类型转换',
                             link: '类型转换.md',
+                        },
+                        {
+                            text: '数组的基本操作',
+                            link: '数组的基本操作.md',
                         }
                     ]
                 },
@@ -233,8 +237,16 @@ export default defineUserConfig({
                     text: '类和对象',
                     children: [
                         {
+                            text: '类属性的默认值',
+                            link: '类属性的默认值.md',
+                        },
+                        {
                             text: '静态类',
                             link: '静态类.md',
+                        },
+                        {
+                            text: '静态类OR动态类',
+                            link: '静态类和动态类.md',
                         },
                         {
                             text: 'implements 关键字',
@@ -268,6 +280,15 @@ export default defineUserConfig({
                         {
                             text: 'Cache 缓存',
                             link: 'cache.md',
+                        }
+                    ]
+                },
+                {
+                    text: '最佳实践',
+                    children: [
+                        {
+                            text: 'CRUD 最佳实践',
+                            link: 'curd最佳实践.md',
                         }
                     ]
                 }
