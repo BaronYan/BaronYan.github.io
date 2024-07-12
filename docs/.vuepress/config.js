@@ -32,6 +32,10 @@ export default defineUserConfig({
                 text: '前端技术',
                 children: [
                     {
+                        text: 'UI',
+                        link: '/UI/',
+                    },
+                    {
                         text: 'JavaScript',
                         link: '/JavaScript/',
                     },
@@ -160,8 +164,25 @@ export default defineUserConfig({
                     text: '基础知识',
                     children: [
                         {
-                            text: 'ref&reactive',
-                            link: 'ref&reactive.md',
+                            text: '基础知识',
+                            link: 'base/index.md',
+                        },
+                    ]
+                },
+                {
+                    text: '全局对象',
+                    children: [
+                        {
+                            text: '数组',
+                            link: 'global_objects/array.md',
+                        },
+                        {
+                            text: '对象',
+                            link: 'global_objects/objects.md',
+                        },
+                        {
+                            text: '字符串',
+                            link: 'global_objects/字符串截取导致的BUG.md',
                         }
                     ]
                 },
@@ -299,6 +320,17 @@ export default defineUserConfig({
                     children: [
                         {
                             text: '线性代数系统课程',
+                            link: 'index.md',
+                        }
+                    ]
+                }
+            ],
+            '/UI/': [
+                {
+                    text: 'UI 鉴赏',
+                    children: [
+                        {
+                            text: 'UI 鉴赏',
                             link: 'index.md',
                         }
                     ]
