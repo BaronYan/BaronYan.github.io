@@ -249,6 +249,15 @@ export default defineUserConfig({
                             link: '类型转换.md',
                         },
                         {
+                            text: '运算符',
+                            children:[
+                                {
+                                    text: '安全访问运算符',
+                                    link: 'base_运算符_安全访问运算符.md',
+                                }
+                            ]
+                        },
+                        {
                             text: '数组的基本操作',
                             link: '数组的基本操作.md',
                         }
@@ -283,6 +292,10 @@ export default defineUserConfig({
                         {
                             text: '表单验证',
                             link: '表单验证.md',
+                        },
+                        {
+                            text: '限流1',
+                            link: '限流1.md',
                         }
                     ]
                 },
@@ -291,7 +304,7 @@ export default defineUserConfig({
                     children: [
                         {
                             text: 'precognition',
-                            link: 'packages.md',
+                            link: 'precognition.md',
                         }
                     ]
                 },
