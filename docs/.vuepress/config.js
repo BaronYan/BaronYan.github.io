@@ -166,7 +166,7 @@ export default defineUserConfig({
                         {
                             text: '基础知识',
                             link: 'base/index.md',
-                        },
+                        }
                     ]
                 },
                 {
@@ -227,6 +227,36 @@ export default defineUserConfig({
                         {
                             text: 'line-height',
                             link: 'line_height.md',
+                        },
+                        {
+                            text: 'backdrop-filter',
+                            link: 'backdrop-filter.md',
+                        }
+                    ]
+                },
+                {
+                    text: '文本',
+                    children: [
+                        {
+                            text: 'white-space',
+                            link: 'white-space.md',
+                        }
+                    ]
+                },
+                {
+                    text: '盒子模型',
+                    children: [
+                        {
+                            text: 'box-shadow',
+                            link: 'box-shadow.md',
+                        },
+                        {
+                            text: 'shadow-box1',
+                            link: 'shadow案例.md',
+                        },
+                        {
+                            text: 'outline',
+                            link: 'outline.md',
                         }
                     ]
                 }
