@@ -191,7 +191,7 @@ export default defineUserConfig({
                     children: [
                         {
                             text: 'HTMLElement和Node有何不同',
-                            link: 'HTMLElement和Node有何不同.md',
+                            link: 'dom/HTMLElement和Node有何不同.md',
                         }
                     ]
                 },
