@@ -190,8 +190,8 @@ export default defineUserConfig({
                     text: 'dom',
                     children: [
                         {
-                            text: 'ref&reactive',
-                            link: 'ref&reactive.md',
+                            text: 'HTMLElement和Node有何不同',
+                            link: 'HTMLElement和Node有何不同.md',
                         }
                     ]
                 },
