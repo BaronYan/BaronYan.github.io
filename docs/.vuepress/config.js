@@ -120,6 +120,10 @@ export default defineUserConfig({
                         {
                             text: 'ref&reactive',
                             link: 'ref&reactive.md',
+                        },
+                        {
+                            text: 'watchEffect',
+                            link: 'watchEffect.md',
                         }
                     ]
                 },
