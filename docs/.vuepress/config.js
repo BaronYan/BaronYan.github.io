@@ -89,8 +89,8 @@ export default defineUserConfig({
                 link: '/category/',
             },
             {
-                text: 'HTML',
-                link: '/html/',
+                text: 'AI',
+                link: '/ai/',
             },
             {
                 text: 'Tag',
@@ -261,6 +261,23 @@ export default defineUserConfig({
                         {
                             text: 'outline',
                             link: 'outline.md',
+                        },
+                        {
+                            text: '层叠上下文',
+                            link: '层叠上下文.md',
+                        }
+                    ]
+                },
+                {
+                    text: 'demo',
+                    children:[
+                        {
+                            text: 'transform1',
+                            link: 'demo_transform_translate.md',
+                        },
+                        {
+                            text: 'animation border',
+                            link: 'demo_animation_border.md',
                         }
                     ]
                 }
@@ -379,6 +396,17 @@ export default defineUserConfig({
                         {
                             text: 'UI 鉴赏',
                             link: 'index.md',
+                        }
+                    ]
+                }
+            ],
+            '/ai/':[
+                {
+                    text: 'ChatGPT',
+                    children: [
+                        {
+                            text: 'ChatGPT越狱提示词',
+                            link: 'ChatGPT越狱提示词.md',
                         }
                     ]
                 }
