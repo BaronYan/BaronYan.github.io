@@ -44,6 +44,10 @@ export default defineUserConfig({
                         link: '/css/',
                     },
                     {
+                        text: 'postcss',
+                        link: '/postcss/',
+                    },
+                    {
                         text: 'Vue3',
                         link: '/vue3/',
                     },
@@ -407,6 +411,17 @@ export default defineUserConfig({
                         {
                             text: 'ChatGPT越狱提示词',
                             link: 'ChatGPT越狱提示词.md',
+                        }
+                    ]
+                }
+            ],
+            'postcss':[
+                {
+                    text: '基础',
+                    children: [
+                        {
+                            text: 'postcss',
+                            link: 'index.md',
                         }
                     ]
                 }
