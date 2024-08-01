@@ -97,8 +97,8 @@ export default defineUserConfig({
                 link: '/ai/',
             },
             {
-                text: 'Tag',
-                link: '/tag/',
+                text: 'mysql',
+                link: '/mysql/',
             },
             {
                 text: 'Timeline',
@@ -422,6 +422,17 @@ export default defineUserConfig({
                         {
                             text: 'postcss',
                             link: 'index.md',
+                        }
+                    ]
+                }
+            ],
+            '/mysql/':[
+                {
+                    text: 'mysql架构',
+                    children: [
+                        {
+                            text: 'mysql架构',
+                            link: 'mysql架构.md',
                         }
                     ]
                 }
