@@ -273,6 +273,15 @@ export default defineUserConfig({
                     ]
                 },
                 {
+                    text: '布局',
+                    children: [
+                        {
+                            text: 'grid',
+                            link: 'grid.md',
+                        }
+                    ]
+                },
+                {
                     text: 'demo',
                     children:[
                         {
