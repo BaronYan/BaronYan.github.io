@@ -276,7 +276,7 @@ export default defineUserConfig({
                     text: '布局',
                     children: [
                         {
-                            text: 'grid',
+                            text: 'CSS 网格完整指南',
                             link: 'grid.md',
                         }
                     ]
