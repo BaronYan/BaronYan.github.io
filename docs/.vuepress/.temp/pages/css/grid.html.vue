@@ -28,10 +28,14 @@
 <li>网格单元<br>
 相邻两行网格线和相邻两列网格线之间的空间。它是网格的一个“单位”。</li>
 </ul>
-<p><img src="@source/images/20240805001.svg" alt="网格线"></p>
-<p><img src="@source/images/20240805002.svg" alt="网格轨道"></p>
-<p><img src="@source/images/20240805003.svg" alt="网格区域"></p>
-<p><img src="@source/images/20240805004.svg" alt="网格单元"></p>
+<p><strong>网格线</strong>
+<img src="@source/images/20240805001.svg" alt="网格线">
+<strong>网格轨道</strong>
+<img src="@source/images/20240805002.svg" alt="网格轨道">
+<strong>网格区域</strong>
+<img src="@source/images/20240805003.svg" alt="网格区域">
+<strong>网格单元</strong>
+<img src="@source/images/20240805004.svg" alt="网格单元"></p>
 <h3 id="网格容器-的属性" tabindex="-1"><a class="header-anchor" href="#网格容器-的属性"><span>（网格容器）的属性</span></a></h3>
 <ul>
 <li>display</li>

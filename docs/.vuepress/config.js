@@ -278,7 +278,20 @@ export default defineUserConfig({
                         {
                             text: 'CSS 网格完整指南',
                             link: 'grid.md',
+                        },
+                        {
+                            text: 'Positions',
+                            link: 'position.md',
                         }
+                    ]
+                },
+                {
+                    text: '动画',
+                    children: [
+                        {
+                            text: 'animation',
+                            link: 'animation.md',
+                        },
                     ]
                 },
                 {
