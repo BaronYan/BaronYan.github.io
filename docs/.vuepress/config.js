@@ -54,6 +54,10 @@ export default defineUserConfig({
                     {
                         text: 'Vue的设计与实现',
                         link: '/Vuejs的设计与实现/',
+                    },
+                    {
+                        text: '前端常用插件',
+                        link: '/frond_plugs/',
                     }
                 ]
             },
