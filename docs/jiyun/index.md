@@ -1,21 +1,35 @@
+## 项目初始化
 ```bash
+
+# 创建项目
 composer create-project laravel/laravel thbGlobalLogistics --prefer-dist
 cd thbGlobalLogistics
+
+# 安装多语言
+php artisan lang:publish
+
+# 安装 debugbar
 composer require barryvdh/laravel-debugbar --dev
 php artisan vendor:publish
+
+
 # 修改 config/debugbar.php
+
 # 修改 .gitignore   [ignore  / ɪɡˈnɔː(r) / 忽视]
+
 # 修改 config/app.php
 #       timezone='UTC' =》timezone='Asia/Shanghai'
 
-
+# 加入 git 版本管理
 git init
 git add .
 git commit -m "项目初始化"
 
+
 # 安装 breeze
 composer require laravel/breeze --dev
-# 设置 npm 源
+
+# 如果下面操作失败，则设置 npm 源
 npm config set registry https://registry.npmmirror.com
 
 php artisan breeze:install
@@ -37,13 +51,10 @@ php artisan breeze:install
 #  │ › ● PHPUnit                                                  │
 #  └──────────────────────────────────────────────────────────────┘
 
+# 切换 npm 为  yarn
 rm -rf node_modules
 rm -rf package-lock.json
 yarn
-
-# 安装多语言
-php artisan lang:publish
-
 
 
 composer require laravel/horizon
