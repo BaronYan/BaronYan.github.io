@@ -101,8 +101,8 @@ export default defineUserConfig({
                 link: '/ai/',
             },
             {
-                text: 'mysql',
-                link: '/mysql/',
+                text: 'jiyun',
+                link: '/jiyun/',
             },
             {
                 text: 'Timeline',
@@ -459,6 +459,17 @@ export default defineUserConfig({
                         {
                             text: 'mysql架构',
                             link: 'mysql架构.md',
+                        }
+                    ]
+                }
+            ],
+            '/jiyun/':[
+                {
+                    text: 'jiyun',
+                    children: [
+                        {
+                            text: 'env',
+                            link: 'env.md',
                         }
                     ]
                 }
