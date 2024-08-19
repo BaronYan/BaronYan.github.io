@@ -286,6 +286,10 @@ export default defineUserConfig({
                         {
                             text: 'Positions',
                             link: 'position.md',
+                        },
+                        {
+                            text: '视口相关单位',
+                            link: '视口相关单位.md',
                         }
                     ]
                 },
