@@ -19,6 +19,11 @@ php artisan vendor:publish
 # 修改 config/app.php
 #       timezone='UTC' =》timezone='Asia/Shanghai'
 
+# 该软件包可生成辅助文件，使您的集成开发环境能提供准确的自动完成功能。 
+# 生成过程基于项目中的文件，因此它们始终是最新的。
+composer require --dev barryvdh/laravel-ide-helper
+php artisan ide-helper:generate
+
 # 加入 git 版本管理
 git init
 git add .
@@ -199,3 +204,5 @@ yarn add nanoid
 ```
 
 https://www.youtube.com/watch?v=gv9z1yv0_7k
+
+

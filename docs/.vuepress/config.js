@@ -215,6 +215,15 @@ export default defineUserConfig({
                             link: 'global_objects/字符串截取导致的BUG.md',
                         }
                     ]
+                },
+                {
+                    text: '媒体查询',
+                    children: [
+                        {
+                            text: '媒体查询',
+                            link: '媒体查询.md',
+                        }
+                    ]
                 }
             ],
             '/html/': [
