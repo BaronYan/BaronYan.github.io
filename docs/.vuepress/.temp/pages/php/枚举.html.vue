@@ -19,7 +19,7 @@
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>此声明创建了一个名为 <code v-pre>Suit</code> 的新枚举类型，
 它有且只有四个合法值：<code v-pre>Suit::Hearts</code>、<code v-pre>Suit::Diamonds</code>、 <code v-pre>Suit::Clubs</code> 和 <code v-pre>Suit::Spades</code>。变量可以赋给其中一个合法值。</p>
 <p>默认情况下，实例本质上不由标量值支持。也就是说，<code v-pre>Suit::Hearts</code> 不等于&quot;0&quot;。相反，每个实例都由该名称的单例对象支持。</p>
-<p>所有实例都有一个只读属性 <code v-pre>name</code>，即实例本身的 <strong>区分大小写</strong> 的名称。</p>
+<p>所有实例都有一个只读属性 <code v-pre>name</code>，即实例本身的 <strong>区分大小写的名称</strong>。</p>
 <h2 id="支持枚举" tabindex="-1"><a class="header-anchor" href="#支持枚举"><span>支持枚举</span></a></h2>
 <p>默认情况下，枚举实例没有标量等效项。它们只是单例对象。
 但是，在很多情况下，枚举实例需要能够往返于数据库或类似的数据存储区，因此，定义一个内置的标量等效项是有用的。</p>
