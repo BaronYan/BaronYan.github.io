@@ -375,6 +375,10 @@ export default defineUserConfig({
                         {
                             text: 'implements 关键字',
                             link: 'implements.md',
+                        },
+                        {
+                            text: '枚举',
+                            link: '枚举.md',
                         }
                     ]
                 }

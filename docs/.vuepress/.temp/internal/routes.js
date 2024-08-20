@@ -58,6 +58,7 @@ export const routes = Object.fromEntries([
   ["/php/implements.html", { loader: () => import(/* webpackChunkName: "php_implements.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/php/implements.html.js"), meta: {"title":""} }],
   ["/php/", { loader: () => import(/* webpackChunkName: "php_index.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/php/index.html.js"), meta: {"title":""} }],
   ["/php/%E6%95%B0%E7%BB%84%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C.html", { loader: () => import(/* webpackChunkName: "php_数组的基本操作.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/php/数组的基本操作.html.js"), meta: {"title":""} }],
+  ["/php/%E6%9E%9A%E4%B8%BE.html", { loader: () => import(/* webpackChunkName: "php_枚举.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/php/枚举.html.js"), meta: {"title":""} }],
   ["/php/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1.html", { loader: () => import(/* webpackChunkName: "php_类与对象.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/php/类与对象.html.js"), meta: {"title":""} }],
   ["/php/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2.html", { loader: () => import(/* webpackChunkName: "php_类型转换.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/php/类型转换.html.js"), meta: {"title":""} }],
   ["/php/%E7%B1%BB%E5%B1%9E%E6%80%A7%E7%9A%84%E9%BB%98%E8%AE%A4%E5%80%BC.html", { loader: () => import(/* webpackChunkName: "php_类属性的默认值.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/php/类属性的默认值.html.js"), meta: {"title":""} }],

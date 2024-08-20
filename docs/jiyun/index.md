@@ -24,6 +24,10 @@ php artisan vendor:publish
 composer require --dev barryvdh/laravel-ide-helper
 php artisan ide-helper:generate
 
+# 每次新增 model 的时候执行一次
+php artisan ide-helper:models
+
+
 # 加入 git 版本管理
 git init
 git add .
