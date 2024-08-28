@@ -1,4 +1,4 @@
-<template><div><h2 id="curl" tabindex="-1"><a class="header-anchor" href="#curl"><span>curl</span></a></h2>
+<template><div><h1 id="快速认识-curl" tabindex="-1"><a class="header-anchor" href="#快速认识-curl"><span>快速认识 curl</span></a></h1>
 <p>curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就是客户端（client）的 URL 工具的意思。</p>
 <p>它的功能非常强大，命令行参数多达几十种。如果熟练的话，完全可以取代 Postman 这一类的图形界面工具。</p>
 <p>https://www.ruanyifeng.com/blog/2019/09/curl-reference.html</p>

@@ -1,6 +1,6 @@
 
 
-
+# 快速认识 chmod
 
 
 chmod (change mode) 命令是控制用户对文件的权限的命令

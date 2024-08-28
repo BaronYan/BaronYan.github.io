@@ -1,4 +1,5 @@
-<template><div><p>chmod (change mode) 命令是控制用户对文件的权限的命令</p>
+<template><div><h1 id="快速认识-chmod" tabindex="-1"><a class="header-anchor" href="#快速认识-chmod"><span>快速认识 chmod</span></a></h1>
+<p>chmod (change mode) 命令是控制用户对文件的权限的命令</p>
 <p>Linux/Unix 的文件调用权限分为三级 : 文件所有者（Owner）、用户组（Group）、其它用户（Other Users）。</p>
 <p><img src="@source/images/20240828001.jpg" alt="chmod"></p>
 <p>只有文件 <strong>所有者和超级用户</strong> 可以修改文件或目录的权限。可以使用绝对模式（八进制数字模式），符号模式指定文件的权限。</p>
