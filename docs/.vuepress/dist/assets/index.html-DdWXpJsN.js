@@ -1,1 +1,0 @@
-import{_ as e,c as t,o}from"./app-CCGAbjkg.js";const n={};function r(a,c){return o(),t("div")}const i=e(n,[["render",r],["__file","index.html.vue"]]),l=JSON.parse('{"path":"/devtools/","title":"","lang":"en-US","frontmatter":{},"headers":[],"git":{"updatedTime":null,"contributors":[]},"filePathRelative":"devtools/index.md","excerpt":""}');export{i as comp,l as data};

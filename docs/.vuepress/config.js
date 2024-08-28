@@ -5,6 +5,8 @@ import {viteBundler} from '@vuepress/bundler-vite'
 import autoprefixer from "autoprefixer";
 import tailwindcss from 'tailwindcss'
 
+import sidebar from './config/sidebar';
+
 export default defineUserConfig({
     lang: 'en-US',
 
@@ -490,7 +492,8 @@ export default defineUserConfig({
                         }
                     ]
                 }
-            ]
+            ],
+            ...sidebar
         },
         postcss: {
             plugins: {
