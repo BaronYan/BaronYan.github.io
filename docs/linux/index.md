@@ -6,3 +6,9 @@
 
 ![base commands](../images/basecommands.png)
 
+## 常用命令
+- [chmod](./chmod.md)
+- [curl](./curl.md)
+
+## 其他文章
+- [CPU是如何执行的](./CPU是如何执行程序的.md)
