@@ -12,6 +12,10 @@ title: Home
 - [css](/css/)
 - [vue3](/vue3/)
 
+**开发环境**
+- [常见开发环境设置](/devenv/)
+
+
 geekdaxue.co
 
 <div class="flex gap-4">

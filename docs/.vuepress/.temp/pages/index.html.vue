@@ -4,6 +4,10 @@
 <li><RouteLink to="/css/">css</RouteLink></li>
 <li><RouteLink to="/vue3/">vue3</RouteLink></li>
 </ul>
+<p><strong>开发环境</strong></p>
+<ul>
+<li><RouteLink to="/devenv/">常见开发环境设置</RouteLink></li>
+</ul>
 <p>geekdaxue.co</p>
 <div class="flex gap-4">
     <div class="flex flex-col">
