@@ -201,12 +201,15 @@ Echo.channel('orders.1').listen('OrderShipmentStatusUpdated', (e) => {
 php artisan reverb:start
 ```
 
-## 安装其他前端依赖
 
-```bash
-yarn add nanoid
-```
 
 https://www.youtube.com/watch?v=gv9z1yv0_7k
 
 
+
+## 安装其他前端依赖
+
+```bash
+yarn add nanoid vue-i18n@9 nanoid animate.css normalize.css  tailwind-animatecss # vee-validate yup
+yarn add vite-plugin-svg-icons pinia pinia-plugin-persistedstate -D # import 'virtual:svg-icons-register'
+```

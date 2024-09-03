@@ -180,10 +180,11 @@
 </ol>
 <div class="language-bash line-numbers-mode" data-highlighter="prismjs" data-ext="sh" data-title="sh"><pre v-pre class="language-bash"><code><span class="line">php artisan reverb:start</span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h2 id="安装其他前端依赖" tabindex="-1"><a class="header-anchor" href="#安装其他前端依赖"><span>安装其他前端依赖</span></a></h2>
-<div class="language-bash line-numbers-mode" data-highlighter="prismjs" data-ext="sh" data-title="sh"><pre v-pre class="language-bash"><code><span class="line"><span class="token function">yarn</span> <span class="token function">add</span> nanoid</span>
-<span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p>https://www.youtube.com/watch?v=gv9z1yv0_7k</p>
-</div></template>
+<h2 id="安装其他前端依赖" tabindex="-1"><a class="header-anchor" href="#安装其他前端依赖"><span>安装其他前端依赖</span></a></h2>
+<div class="language-bash line-numbers-mode" data-highlighter="prismjs" data-ext="sh" data-title="sh"><pre v-pre class="language-bash"><code><span class="line"><span class="token function">yarn</span> <span class="token function">add</span> nanoid vue-i18n@9 nanoid animate.css normalize.css  tailwind-animatecss <span class="token comment"># vee-validate yup</span></span>
+<span class="line"><span class="token function">yarn</span> <span class="token function">add</span> vite-plugin-svg-icons pinia pinia-plugin-persistedstate <span class="token parameter variable">-D</span> <span class="token comment"># import 'virtual:svg-icons-register'</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div></div></div></div></template>
 
 

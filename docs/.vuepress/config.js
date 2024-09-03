@@ -482,17 +482,6 @@ export default defineUserConfig({
                     ]
                 }
             ],
-            '/jiyun/':[
-                {
-                    text: 'jiyun',
-                    children: [
-                        {
-                            text: 'env',
-                            link: 'env.md',
-                        }
-                    ]
-                }
-            ],
             ...sidebar
         },
         postcss: {
