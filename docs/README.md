@@ -16,6 +16,10 @@ title: Home
 - [常见开发环境设置](/devenv/)
 
 
+**node**
+- [node](/node/)
+
+
 geekdaxue.co
 
 <div class="flex gap-4">

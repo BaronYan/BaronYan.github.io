@@ -8,6 +8,10 @@
 <ul>
 <li><RouteLink to="/devenv/">常见开发环境设置</RouteLink></li>
 </ul>
+<p><strong>node</strong></p>
+<ul>
+<li><RouteLink to="/node/">node</RouteLink></li>
+</ul>
 <p>geekdaxue.co</p>
 <div class="flex gap-4">
     <div class="flex flex-col">
