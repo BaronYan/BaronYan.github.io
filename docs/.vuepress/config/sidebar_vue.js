@@ -53,8 +53,12 @@ export default {
                     children: [
                         {
                             text: 'import.meta.glob',
-                            link: 'vite.glob.md',
-                        }
+                            link: 'vite.import.meta.glob.md',
+                        },
+                        {
+                            text: 'import.meta.url',
+                            link: 'vite.import.meta.url.md',
+                        },
                     ]
                 },
             ],
