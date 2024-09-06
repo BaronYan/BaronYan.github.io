@@ -28,6 +28,10 @@ const imgUrl = new URL(imagePath, import.meta.url).href
 
 `import.meta.url` 在浏览器和 Node.js 中有不同的语义。
 
+特定的 `__filename` 和 `__dirname` 在 ES 模块中不被允许，我们需要使用可替换的 `import.meta.url` 替换。它包含一个绝对路径的 URL 文件。举例来说：`'file:///Users/rauschma/my-module.mjs'`
+
+
+
 
 ## URL
 

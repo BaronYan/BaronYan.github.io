@@ -16,6 +16,7 @@
 <span class="line"><span class="token keyword">const</span> imgUrl <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span>imagePath<span class="token punctuation">,</span> <span class="token keyword">import</span><span class="token punctuation">.</span>meta<span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">.</span>href</span>
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div></div></div><p><code v-pre>import.meta.url</code> 在浏览器和 Node.js 中有不同的语义。</p>
+<p>特定的 <code v-pre>__filename</code> 和 <code v-pre>__dirname</code> 在 ES 模块中不被允许，我们需要使用可替换的 <code v-pre>import.meta.url</code> 替换。它包含一个绝对路径的 URL 文件。举例来说：<code v-pre>'file:///Users/rauschma/my-module.mjs'</code></p>
 <h2 id="url" tabindex="-1"><a class="header-anchor" href="#url"><span>URL</span></a></h2>
 <p>URL() 构造函数返回一个新创建的 URL 对象，该对象表示由参数定义的 URL。</p>
 <p>如果给定的基本 URL 或生成的 URL 不是有效的 URL，则会抛出 JavaScript TypeError 异常。</p>
