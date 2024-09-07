@@ -156,3 +156,56 @@ $table->foreign('user_id')->references('id')->on('users');
 
 
 `foreignId()` 和 `foreignUlid()` 都提供了更简洁的语法，并且可以直接链接 `constrained()` 方法，使得创建外键关系更加方便。选择使用哪种方法主要取决于您的主键类型和数据库设计。
+
+
+## 联合主键
+
+Eloquent 要求每个模型至少有一个唯一标识“ID”，可用作其主键。
+Eloquent 模型不支持“复合”主键。
+但是，除了表的唯一标识主键之外，您还可以自由地向数据库表添加其他多列唯一索引。
+
+```php
+// 添加了 company_id 外键
+$table->foreignId('company_id')->constrained()->onDelete('cascade');
+
+// 创建联合主键
+$table->primary(['id', 'company_id']);
+
+// 确保每个公司内的 email 唯一
+$table->unique(['company_id', 'email']);
+
+// 确保每个公司内的 code 唯一
+$table->unique(['company_id', 'code']);
+```
+以上代码确保了
+- 每个用户都属于一个公司。
+- 用户的 ID 和公司 ID 共同构成主键。
+- 在同一公司内，email 和 code 都是唯一的。
+- 当公司被删除时，该公司的所有用户也会被删除（通过 `onDelete('cascade')`）。
+
+请注意，这种设计假设一个用户只能属于一个公司。如果您需要允许用户属于多个公司，那么您可能需要考虑创建一个单独的 `company_user` 关联表。
+另外，由于我们使用了联合主键，您可能需要调整一些 Eloquent 模型的设置，例如在 User 模型中：
+
+```php
+class User extends Model
+{
+    protected $primaryKey = ['id', 'company_id'];
+    public $incrementing = false;
+    protected $keyType = 'string';
+}
+```
+这样的设置确保了 Eloquent 能正确处理复合主键。
+
+### 主键
+
+Eloquent 还会假定每个模型对应的数据库表都有一个名为 `id` 的主键列。
+- 如有必要，你可以在模型上定义一个受保护的 `$primaryKey` 属性，以指定作为模型主键的不同列
+- 此外，Eloquent 假定主键是一个递增的整数值，这意味着 Eloquent 会自动将主键转换为整数。
+- 如果您希望使用非递增或非数字主键，则必须在模型上定义一个公共属性 `$incrementing`，并将其设置为 `false`：`public $incrementing = false;`
+- 如果模型的主键不是整数，则应在模型上定义受保护的 `$keyType` 属性。此属性应具有以下值：`string`
+```php
+protected $primaryKey = 'flight_id';
+protected $primaryKey = ['id', 'company_id'];
+```
+
+

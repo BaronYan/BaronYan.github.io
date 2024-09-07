@@ -141,6 +141,50 @@
 <li><code v-pre>foreignUlid()</code> 专门用于 ULID 类型的 ID，适用于使用 ULID 作为主键的情况。</li>
 </ul>
 <p><code v-pre>foreignId()</code> 和 <code v-pre>foreignUlid()</code> 都提供了更简洁的语法，并且可以直接链接 <code v-pre>constrained()</code> 方法，使得创建外键关系更加方便。选择使用哪种方法主要取决于您的主键类型和数据库设计。</p>
-</div></template>
+<h2 id="联合主键" tabindex="-1"><a class="header-anchor" href="#联合主键"><span>联合主键</span></a></h2>
+<p>Eloquent 要求每个模型至少有一个唯一标识“ID”，可用作其主键。
+Eloquent 模型不支持“复合”主键。
+但是，除了表的唯一标识主键之外，您还可以自由地向数据库表添加其他多列唯一索引。</p>
+<div class="language-php line-numbers-mode" data-highlighter="prismjs" data-ext="php" data-title="php"><pre v-pre class="language-php"><code><span class="line"><span class="token comment">// 添加了 company_id 外键</span></span>
+<span class="line"><span class="token variable">$table</span><span class="token operator">-></span><span class="token function">foreignId</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'company_id'</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">constrained</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">onDelete</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'cascade'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="token comment">// 创建联合主键</span></span>
+<span class="line"><span class="token variable">$table</span><span class="token operator">-></span><span class="token function">primary</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'id'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'company_id'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="token comment">// 确保每个公司内的 email 唯一</span></span>
+<span class="line"><span class="token variable">$table</span><span class="token operator">-></span><span class="token function">unique</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'company_id'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'email'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="token comment">// 确保每个公司内的 code 唯一</span></span>
+<span class="line"><span class="token variable">$table</span><span class="token operator">-></span><span class="token function">unique</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'company_id'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'code'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>以上代码确保了</p>
+<ul>
+<li>每个用户都属于一个公司。</li>
+<li>用户的 ID 和公司 ID 共同构成主键。</li>
+<li>在同一公司内，email 和 code 都是唯一的。</li>
+<li>当公司被删除时，该公司的所有用户也会被删除（通过 <code v-pre>onDelete('cascade')</code>）。</li>
+</ul>
+<p>请注意，这种设计假设一个用户只能属于一个公司。如果您需要允许用户属于多个公司，那么您可能需要考虑创建一个单独的 <code v-pre>company_user</code> 关联表。
+另外，由于我们使用了联合主键，您可能需要调整一些 Eloquent 模型的设置，例如在 User 模型中：</p>
+<div class="language-php line-numbers-mode" data-highlighter="prismjs" data-ext="php" data-title="php"><pre v-pre class="language-php"><code><span class="line"><span class="token keyword">class</span> <span class="token class-name-definition class-name">User</span> <span class="token keyword">extends</span> <span class="token class-name">Model</span></span>
+<span class="line"><span class="token punctuation">{</span></span>
+<span class="line">    <span class="token keyword">protected</span> <span class="token variable">$primaryKey</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string single-quoted-string">'id'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'company_id'</span><span class="token punctuation">]</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token keyword">public</span> <span class="token variable">$incrementing</span> <span class="token operator">=</span> <span class="token constant boolean">false</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token keyword">protected</span> <span class="token variable">$keyType</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'string'</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>这样的设置确保了 Eloquent 能正确处理复合主键。</p>
+<h3 id="主键" tabindex="-1"><a class="header-anchor" href="#主键"><span>主键</span></a></h3>
+<p>Eloquent 还会假定每个模型对应的数据库表都有一个名为 <code v-pre>id</code> 的主键列。</p>
+<ul>
+<li>如有必要，你可以在模型上定义一个受保护的 <code v-pre>$primaryKey</code> 属性，以指定作为模型主键的不同列</li>
+<li>此外，Eloquent 假定主键是一个递增的整数值，这意味着 Eloquent 会自动将主键转换为整数。</li>
+<li>如果您希望使用非递增或非数字主键，则必须在模型上定义一个公共属性 <code v-pre>$incrementing</code>，并将其设置为 <code v-pre>false</code>：<code v-pre>public $incrementing = false;</code></li>
+<li>如果模型的主键不是整数，则应在模型上定义受保护的 <code v-pre>$keyType</code> 属性。此属性应具有以下值：<code v-pre>string</code></li>
+</ul>
+<div class="language-php line-numbers-mode" data-highlighter="prismjs" data-ext="php" data-title="php"><pre v-pre class="language-php"><code><span class="line"><span class="token keyword">protected</span> <span class="token variable">$primaryKey</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'flight_id'</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">protected</span> <span class="token variable">$primaryKey</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string single-quoted-string">'id'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'company_id'</span><span class="token punctuation">]</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div></div></div></div></template>
 
 
