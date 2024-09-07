@@ -12,14 +12,14 @@ $table->foreign('company_id')->references('id')->on('companies')->onDelete('casc
 这个方法的主要功能包括：
 1. **建立表间关系**：它定义了当前表中的一个字段与另一个表中的字段之间的关系。
 2. **确保数据完整性**：通过外键约束，可以防止在子表中插入无效的数据。
-3. **定义级联操作**：可以指定当主表中的记录被**更新或删除**时，子表中相 关记录应该如何处理。
+3. **定义级联操作**：可以指定当主表中的记录被**更新或删除**时，子表中相关记录应该如何处理。
 
 具体到您的代码：
 1. `foreign('company_id')`：将 `company_id` 字段设置为外键。
-2. `references('id')`：指定这个外键引用的是另一个表的 id 字段。
-3. `on('companies')`：指定被引用的表是 companies 表。
-4. `onDelete('cascade')`：当 companies 表中的记录被删除时，相关的 warehouses 记录也会被自动删除。
-5. `onUpdate('cascade')`：当 companies 表中的 id 更新时，warehouses 表中相应的 company_id 也会自动更新。
+2. `references('id')`：指定这个外键引用的是另一个表的 `id` 字段。
+3. `on('companies')`：指定被引用的表是 `companies` 表。
+4. `onDelete('cascade')`：当 `companies` 表中的记录被删除时，相关的 `warehouses` 记录也会被自动删除。
+5. `onUpdate('cascade')`：当 `companies` 表中的 `id` 更新时，`warehouses` 表中相应的 `company_id` 也会自动更新。
 
 总的来说，`$table->foreign()` 方法帮助我们在数据库层面建立和维护表之间的关系，确保数据的一致性和完整性。
 
@@ -57,15 +57,38 @@ $table->foreign('company_id')
 
 **以上代码中的 cascade 是什么意思，他是 sql语句中的语法吗？**
 
-是的，"cascade" 是 SQL 语句中的一个关键词，用于定义外键约束的行为。
+是的，"cascade" 是 SQL 语句中的一个关键词，用于定义外键约束的行为。生变化时，相关联的子表中的记录应该如何处理。
 
-生变化时，相关联的子表中的记录应该如何处理。
 "cascade" 的含义是"级联"，主要用于以下两种情况：
-ON DELETE CASCADE：当主表中的记录被删除时，子表中所有关联的记录也会被自动删除。
-ON UPDATE CASCADE：当主表中的主键被更新时，子表中所有关联记录的外键值也会自动更新。
+
+- `ON DELETE CASCADE`：当主表中的记录被删除时，子表中所有关联的记录也会被自动删除。
+- `ON UPDATE CASCADE`：当主表中的主键被更新时，子表中所有关联记录的外键值也会自动更新。
+
 在 SQL 中，这些约束可能看起来像这样：
 
+```sql
+FOREIGN KEY (company_id) REFERENCES companies(id) 
+ON DELETE CASCADE 
+ON UPDATE CASCADE
+```
 
+在 Laravel 的迁移文件中，这些 SQL 概念被封装成了更易读的方法：
+
+```php
+$table->foreign('company_id')
+    ->references('id')
+    ->on('companies')
+    ->onDelete('cascade')
+    ->onUpdate('cascade');
+```
+
+"cascade" 只是可能的选项之一。其他常见选项包括：
+
+- `SET NULL`：将外键设置为 NULL（在 Laravel 中可以用 `nullOnDelete()` 简写）
+- `RESTRICT`：阻止删除或更新主表中的记录（这通常是默认行为）
+- `NO ACTION`：类似于 `RESTRICT`，但检查是在事务结束时进行的
+
+选择哪种方式取决于您的具体业务需求和数据完整性要求。
 
 ### constrained()
 
