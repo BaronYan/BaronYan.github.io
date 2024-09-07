@@ -23,6 +23,24 @@ export default {
             ]
         },
         {
+            text: 'eloquent',
+            children: [
+                {
+                    text: 'eloquent',
+                    link: 'eloquent.md',
+                },
+            ]
+        },
+        {
+            text: 'seeder',
+            children: [
+                {
+                    text: 'seeder',
+                    link: 'seeder.md',
+                },
+            ]
+        },
+        {
             text: '套件',
             children: [
                 {
