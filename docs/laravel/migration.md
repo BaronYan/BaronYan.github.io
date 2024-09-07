@@ -209,3 +209,39 @@ protected $primaryKey = ['id', 'company_id'];
 ```
 
 
+## ulid()
+
+```php
+$table->ulid()->primary();
+````
+中  `ulid()` 之后有没有必要在执行 `primary()` ?
+
+您提出了一个很好的问题。实际上，在使用 `ulid()` 方法后，通常不需要再调用 `primary()` 方法。  
+让我解释一下原因：
+1. `ulid()` 方法的行为：
+    - 在 Laravel 中，`$table->ulid()` 方法会自动将该列设置为主键。
+    - 它等同于 `$table->ulid('id')->primary()`。
+2. 隐式主键设置：
+    - 当您使用 `ulid()` 方法时，Laravel 会自动将该列视为表的主键。
+    - 这是因为 ULID（Universally Unique Lexicographically Sortable Identifier）通常用作主键。
+
+因此，您的代码可以简化为：`$table->ulid();`
+
+这行代码就足以创建一个 ULID 类型的主键列。  
+然而，有几点需要注意：
+1. 显式声明：
+    - 虽然不是必需的，但有时为了代码的清晰性，开发者可能会选择显式地调用 `primary()`。
+    - 这不会造成任何问题，只是重复了已经隐含的设置。
+2. 自定义列名：
+    - 如果您想使用不同于默认的 'id' 作为列名，您可以这样做：`$table->ulid('custom_id')->primary();`
+3. 复合主键：
+    - 如果您需要创建复合主键（包括 ULID 和其他列），那么您确实需要显式地调用 `primary()`：
+    ```php
+    $table->ulid('id');
+    $table->foreignId('company_id');
+    $table->primary(['id', 'company_id']);
+    ```
+**总结：**  
+- 对于单一的 ULID 主键，`$table->ulid()`; 就足够了。
+- 对于更复杂的主键设置，或者为了代码的明确性，您可以选择显式地调用 `primary()`。
+- 在您的情况下，如果 ULID 是唯一的主键，可以简单地使用 `$table->ulid();`。

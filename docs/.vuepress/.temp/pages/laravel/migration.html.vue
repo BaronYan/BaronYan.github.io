@@ -185,6 +185,57 @@ Eloquent 模型不支持“复合”主键。
 <div class="language-php line-numbers-mode" data-highlighter="prismjs" data-ext="php" data-title="php"><pre v-pre class="language-php"><code><span class="line"><span class="token keyword">protected</span> <span class="token variable">$primaryKey</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'flight_id'</span><span class="token punctuation">;</span></span>
 <span class="line"><span class="token keyword">protected</span> <span class="token variable">$primaryKey</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string single-quoted-string">'id'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'company_id'</span><span class="token punctuation">]</span><span class="token punctuation">;</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div></div></div></div></template>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="ulid" tabindex="-1"><a class="header-anchor" href="#ulid"><span>ulid()</span></a></h2>
+<div class="language-php line-numbers-mode" data-highlighter="prismjs" data-ext="php" data-title="php"><pre v-pre class="language-php"><code><span class="line"><span class="token variable">$table</span><span class="token operator">-></span><span class="token function">ulid</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">primary</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p>中  <code v-pre>ulid()</code> 之后有没有必要在执行 <code v-pre>primary()</code> ?</p>
+<p>您提出了一个很好的问题。实际上，在使用 <code v-pre>ulid()</code> 方法后，通常不需要再调用 <code v-pre>primary()</code> 方法。<br>
+让我解释一下原因：</p>
+<ol>
+<li><code v-pre>ulid()</code> 方法的行为：
+<ul>
+<li>在 Laravel 中，<code v-pre>$table-&gt;ulid()</code> 方法会自动将该列设置为主键。</li>
+<li>它等同于 <code v-pre>$table-&gt;ulid('id')-&gt;primary()</code>。</li>
+</ul>
+</li>
+<li>隐式主键设置：
+<ul>
+<li>当您使用 <code v-pre>ulid()</code> 方法时，Laravel 会自动将该列视为表的主键。</li>
+<li>这是因为 ULID（Universally Unique Lexicographically Sortable Identifier）通常用作主键。</li>
+</ul>
+</li>
+</ol>
+<p>因此，您的代码可以简化为：<code v-pre>$table-&gt;ulid();</code></p>
+<p>这行代码就足以创建一个 ULID 类型的主键列。<br>
+然而，有几点需要注意：</p>
+<ol>
+<li>显式声明：
+<ul>
+<li>虽然不是必需的，但有时为了代码的清晰性，开发者可能会选择显式地调用 <code v-pre>primary()</code>。</li>
+<li>这不会造成任何问题，只是重复了已经隐含的设置。</li>
+</ul>
+</li>
+<li>自定义列名：
+<ul>
+<li>如果您想使用不同于默认的 'id' 作为列名，您可以这样做：<code v-pre>$table-&gt;ulid('custom_id')-&gt;primary();</code></li>
+</ul>
+</li>
+<li>复合主键：
+<ul>
+<li>如果您需要创建复合主键（包括 ULID 和其他列），那么您确实需要显式地调用 <code v-pre>primary()</code>：</li>
+</ul>
+<div class="language-php line-numbers-mode" data-highlighter="prismjs" data-ext="php" data-title="php"><pre v-pre class="language-php"><code><span class="line"><span class="token variable">$table</span><span class="token operator">-></span><span class="token function">ulid</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'id'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token variable">$table</span><span class="token operator">-></span><span class="token function">foreignId</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'company_id'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token variable">$table</span><span class="token operator">-></span><span class="token function">primary</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'id'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'company_id'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+</ol>
+<p><strong>总结：</strong></p>
+<ul>
+<li>对于单一的 ULID 主键，<code v-pre>$table-&gt;ulid()</code>; 就足够了。</li>
+<li>对于更复杂的主键设置，或者为了代码的明确性，您可以选择显式地调用 <code v-pre>primary()</code>。</li>
+<li>在您的情况下，如果 ULID 是唯一的主键，可以简单地使用 <code v-pre>$table-&gt;ulid();</code>。</li>
+</ul>
+</div></template>
 
 
