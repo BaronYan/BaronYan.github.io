@@ -1,4 +1,6 @@
 
+# migration 基础认知
+
 ## 外键约束
 
 ```php
@@ -23,7 +25,7 @@ $table->foreign('company_id')->references('id')->on('companies')->onDelete('casc
 
 总的来说，`$table->foreign()` 方法帮助我们在数据库层面建立和维护表之间的关系，确保数据的一致性和完整性。
 
-### 为空|不为空
+### nullable & cascade
 
 为了确保 `company_id` 字段不为空，您需要在定义外键之前添加 `unsignedBigInteger` 方法并使用 `nullable(false)` 或直接不使用 `nullable()`。以下是修改建议：
 
