@@ -1,8 +1,43 @@
 <template><div><h1 id="migration-基础认知" tabindex="-1"><a class="header-anchor" href="#migration-基础认知"><span>migration 基础认知</span></a></h1>
 <h2 id="外键约束" tabindex="-1"><a class="header-anchor" href="#外键约束"><span>外键约束</span></a></h2>
+<p>Laravel 还支持创建外键约束，用于在数据库级别强制引用完整性。</p>
+<div class="language-php line-numbers-mode" data-highlighter="prismjs" data-ext="php" data-title="php"><pre v-pre class="language-php"><code><span class="line"><span class="token variable">$table</span><span class="token operator">-></span><span class="token function">unsignedBigInteger</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'user_id'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token variable">$table</span><span class="token operator">-></span><span class="token function">foreign</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'user_id'</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">references</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'id'</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'users'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div></div></div><p>由于此语法相当冗长，Laravel 提供了额外的、更简洁的方法，这些方法使用约定来提供更好的开发人员体验。<br>
+使用 <code v-pre>foreignId</code> 方法创建列时，上面的示例可以重写如下：</p>
+<div class="language-php line-numbers-mode" data-highlighter="prismjs" data-ext="php" data-title="php"><pre v-pre class="language-php"><code><span class="line"><span class="token variable">$table</span><span class="token operator">-></span><span class="token function">foreignId</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'user_id'</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">constrained</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><ul>
+<li><code v-pre>foreignId</code> 方法会创建一个<code v-pre>UNSIGNED BIGINT</code> 等效列，</li>
+<li>同时 <code v-pre>constrained</code> 方法会使用约定来确定所引用的表和列。
+<ul>
+<li>如果您的表名与 Laravel 的约定不符，您可以手动将其提供给该constrained方法。</li>
+<li>此外，还可以指定应分配给生成的索引的名称：</li>
+</ul>
+</li>
+</ul>
+<div class="language-php line-numbers-mode" data-highlighter="prismjs" data-ext="php" data-title="php"><pre v-pre class="language-php"><code><span class="line"><span class="token variable">$table</span><span class="token operator">-></span><span class="token function">foreignId</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'user_id'</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">constrained</span><span class="token punctuation">(</span></span>
+<span class="line">    <span class="token argument-name">table</span><span class="token punctuation">:</span> <span class="token string single-quoted-string">'users'</span><span class="token punctuation">,</span> <span class="token argument-name">indexName</span><span class="token punctuation">:</span> <span class="token string single-quoted-string">'posts_user_id'</span></span>
+<span class="line"><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>还可以为约束的“删除时”和“更新时”属性指定所需的操作：</p>
+<div class="language-php line-numbers-mode" data-highlighter="prismjs" data-ext="php" data-title="php"><pre v-pre class="language-php"><code><span class="line"><span class="token variable">$table</span><span class="token operator">-></span><span class="token function">foreignId</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'user_id'</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">constrained</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">onUpdate</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'cascade'</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">onDelete</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'cascade'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p>对于这些操作，还提供了一种替代的、富有表现力的语法：</p>
+<ul>
+<li><code v-pre>$table-&gt;cascadeOnUpdate();</code>	更新应级联。</li>
+<li><code v-pre>$table-&gt;restrictOnUpdate();</code>	应该限制​​更新。</li>
+<li><code v-pre>$table-&gt;noActionOnUpdate();</code>	未对更新采取任何行动。</li>
+<li><code v-pre>$table-&gt;cascadeOnDelete();</code>	删除应该级联。</li>
+<li><code v-pre>$table-&gt;restrictOnDelete();</code>	删除应该受到限制。</li>
+<li><code v-pre>$table-&gt;nullOnDelete();</code>	删除时应将外键值设置为空。</li>
+</ul>
+<p>任何附加的列修饰符都必须在<code v-pre>constrained()</code>方法之前调用：<br>
+<code v-pre>$table-&gt;foreignId('user_id')-&gt;nullable()-&gt;constrained();</code></p>
 <div class="language-php line-numbers-mode" data-highlighter="prismjs" data-ext="php" data-title="php"><pre v-pre class="language-php"><code><span class="line"><span class="token variable">$table</span><span class="token operator">-></span><span class="token function">foreign</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'company_id'</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">references</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'id'</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'companies'</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">onDelete</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'cascade'</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">onUpdate</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'cascade'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h3 id="foreign-、foreignulid" tabindex="-1"><a class="header-anchor" href="#foreign-、foreignulid"><span>foreign()、foreignUlid()</span></a></h3>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h3 id="foreign" tabindex="-1"><a class="header-anchor" href="#foreign"><span>foreign()</span></a></h3>
 <p><code v-pre>$table-&gt;foreign()</code> 方法用于在数据库中创建外键约束。</p>
 <p>这个方法的主要功能包括：</p>
 <ol>
@@ -19,7 +54,7 @@
 <li><code v-pre>onUpdate('cascade')</code>：当 <code v-pre>companies</code> 表中的 <code v-pre>id</code> 更新时，<code v-pre>warehouses</code> 表中相应的 <code v-pre>company_id</code> 也会自动更新。</li>
 </ol>
 <p>总的来说，<code v-pre>$table-&gt;foreign()</code> 方法帮助我们在数据库层面建立和维护表之间的关系，确保数据的一致性和完整性。</p>
-<h3 id="nullable-cascade" tabindex="-1"><a class="header-anchor" href="#nullable-cascade"><span>nullable &amp; cascade</span></a></h3>
+<h3 id="外键可空" tabindex="-1"><a class="header-anchor" href="#外键可空"><span>外键可空</span></a></h3>
 <p>为了确保 <code v-pre>company_id</code> 字段不为空，您需要在定义外键之前添加 <code v-pre>unsignedBigInteger</code> 方法并使用 <code v-pre>nullable(false)</code> 或直接不使用 <code v-pre>nullable()</code>。以下是修改建议：</p>
 <div class="language-php line-numbers-mode" data-highlighter="prismjs" data-ext="php" data-title="php"><pre v-pre class="language-php"><code><span class="line"><span class="token variable">$table</span><span class="token operator">-></span><span class="token function">unsignedBigInteger</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'company_id'</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">nullable</span><span class="token punctuation">(</span><span class="token constant boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 如果设置成 ->nullable() 则表明该字段可为空</span></span>
 <span class="line"><span class="token variable">$table</span><span class="token operator">-></span><span class="token function">foreign</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'company_id'</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">references</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'id'</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'companies'</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">onDelete</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'cascade'</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">onUpdate</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'cascade'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
@@ -41,7 +76,9 @@
 </ol>
 <p>这样设置后，当 companies 表中的一条记录被删除时，warehouses 表中相关记录的 <code v-pre>company_id</code> 将被设置为 null，而不是删除整条记录。
 请注意，这种设置要求 <code v-pre>company_id</code> 字段必须允许为 <code v-pre>null</code>，否则会导致数据库错误。如果您之前没有将 <code v-pre>company_id</code> 设置为可空，请确保添加 <code v-pre>-&gt;nullable()</code> 修饰符。</p>
+<h3 id="nullondelete" tabindex="-1"><a class="header-anchor" href="#nullondelete"><span>nullOnDelete()</span></a></h3>
 <p>在 Laravel 中，<code v-pre>-&gt;onDelete('set null')</code> 确实有一个简写的方法。您可以使用 <code v-pre>-&gt;nullOnDelete()</code> 来代替。这是一个更简洁的语法糖，实现相同的功能。</p>
+<h3 id="cascade" tabindex="-1"><a class="header-anchor" href="#cascade"><span>cascade</span></a></h3>
 <p><strong>以上代码中的 cascade 是什么意思，他是 sql语句中的语法吗？</strong></p>
 <p>是的，&quot;cascade&quot; 是 SQL 语句中的一个关键词，用于定义外键约束的行为。生变化时，相关联的子表中的记录应该如何处理。</p>
 <p>&quot;cascade&quot; 的含义是&quot;级联&quot;，主要用于以下两种情况：</p>

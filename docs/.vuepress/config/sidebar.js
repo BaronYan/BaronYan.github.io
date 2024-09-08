@@ -4,7 +4,7 @@ import {default as sidebar_jiyun} from './sidebar_jiyun';
 import {default as sidebar_node} from './sidebar_node';
 import {default as sidebar_vue} from './sidebar_vue';
 import {default as sidebar_laravel} from './sidebar_laravel';
-
+import {default as sidebar_mysql} from './sidebar_mysql';
 
 export default {
     ...linux,
@@ -12,5 +12,6 @@ export default {
     ...sidebar_jiyun,
     ...sidebar_node,
     ...sidebar_vue,
-    ...sidebar_laravel
+    ...sidebar_laravel,
+    ...sidebar_mysql
 }

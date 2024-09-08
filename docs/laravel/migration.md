@@ -2,12 +2,47 @@
 # migration 基础认知
 
 ## 外键约束
+Laravel 还支持创建外键约束，用于在数据库级别强制引用完整性。
+
+```php
+$table->unsignedBigInteger('user_id');
+$table->foreign('user_id')->references('id')->on('users');
+```
+由于此语法相当冗长，Laravel 提供了额外的、更简洁的方法，这些方法使用约定来提供更好的开发人员体验。  
+使用 `foreignId` 方法创建列时，上面的示例可以重写如下：
+```php
+$table->foreignId('user_id')->constrained();
+```
+- `foreignId` 方法会创建一个`UNSIGNED BIGINT` 等效列，
+- 同时 `constrained` 方法会使用约定来确定所引用的表和列。
+  - 如果您的表名与 Laravel 的约定不符，您可以手动将其提供给该constrained方法。
+  - 此外，还可以指定应分配给生成的索引的名称：
+```php
+$table->foreignId('user_id')->constrained(
+    table: 'users', indexName: 'posts_user_id'
+);
+```
+还可以为约束的“删除时”和“更新时”属性指定所需的操作：
+```php
+$table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+```
+对于这些操作，还提供了一种替代的、富有表现力的语法：
+- `$table->cascadeOnUpdate();`	更新应级联。
+- `$table->restrictOnUpdate();`	应该限制​​更新。
+- `$table->noActionOnUpdate();`	未对更新采取任何行动。
+- `$table->cascadeOnDelete();`	删除应该级联。
+- `$table->restrictOnDelete();`	删除应该受到限制。
+- `$table->nullOnDelete();`	删除时应将外键值设置为空。
+
+任何附加的列修饰符都必须在`constrained()`方法之前调用：  
+`$table->foreignId('user_id')->nullable()->constrained();`
+
 
 ```php
 $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade')->onUpdate('cascade');
 ```
 
-### foreign()、foreignUlid()
+### foreign()
 
 `$table->foreign()` 方法用于在数据库中创建外键约束。
 
@@ -25,7 +60,7 @@ $table->foreign('company_id')->references('id')->on('companies')->onDelete('casc
 
 总的来说，`$table->foreign()` 方法帮助我们在数据库层面建立和维护表之间的关系，确保数据的一致性和完整性。
 
-### nullable & cascade
+### 外键可空
 
 为了确保 `company_id` 字段不为空，您需要在定义外键之前添加 `unsignedBigInteger` 方法并使用 `nullable(false)` 或直接不使用 `nullable()`。以下是修改建议：
 
@@ -55,8 +90,10 @@ $table->foreign('company_id')
 这样设置后，当 companies 表中的一条记录被删除时，warehouses 表中相关记录的 `company_id` 将被设置为 null，而不是删除整条记录。
 请注意，这种设置要求 `company_id` 字段必须允许为 `null`，否则会导致数据库错误。如果您之前没有将 `company_id` 设置为可空，请确保添加 `->nullable()` 修饰符。
 
+### nullOnDelete()
 在 Laravel 中，`->onDelete('set null')` 确实有一个简写的方法。您可以使用 `->nullOnDelete()` 来代替。这是一个更简洁的语法糖，实现相同的功能。
 
+### cascade
 **以上代码中的 cascade 是什么意思，他是 sql语句中的语法吗？**
 
 是的，"cascade" 是 SQL 语句中的一个关键词，用于定义外键约束的行为。生变化时，相关联的子表中的记录应该如何处理。
