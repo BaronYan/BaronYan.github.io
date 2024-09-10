@@ -64,7 +64,11 @@ export default {
                 {
                     text: 'CRUD 最佳实践',
                     link: 'curd最佳实践.md',
-                }
+                },
+                {
+                    text: '将用户定位到他的前缀域名',
+                    link: '将用户定位到他的前缀域名.md',
+                },
             ]
         }
     ]
