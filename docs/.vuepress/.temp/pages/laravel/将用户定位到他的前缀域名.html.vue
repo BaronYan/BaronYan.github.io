@@ -4,17 +4,29 @@
 <h2 id="_2-配置-nginx" tabindex="-1"><a class="header-anchor" href="#_2-配置-nginx"><span>2. 配置 Nginx</span></a></h2>
 <p>确保你的 Nginx 配置支持子域名。在 Nginx 配置中，通常需要设置 server 块来处理不同的子域名。你可以设置一个通配符子域名以便处理所有用户的子域名请求。</p>
 <div class="language-conf line-numbers-mode" data-highlighter="prismjs" data-ext="conf" data-title="conf"><pre v-pre class="language-conf"><code><span class="line">server {</span>
-<span class="line">    listen 80;</span>
+<span class="line">    listen 80; </span>
+<span class="line">    # listen 80 default_server;</span>
+<span class="line">    # listen 443 ssl http2 default_server;</span>
 <span class="line"></span>
 <span class="line">    server_name *.yourdomain.com; # 主要是这一条</span>
 <span class="line"></span>
 <span class="line">    root /var/www/your-laravel-app/public;</span>
 <span class="line"></span>
 <span class="line">    index index.php index.html index.htm;</span>
+<span class="line">    # index index.php index.html index.htm default.php default.htm default.html;</span>
 <span class="line"></span>
+<span class="line">    # 伪静态</span>
 <span class="line">    location / {</span>
-<span class="line">        try_files $uri $uri/ /index.php?$query_string;</span>
+<span class="line">        # try_files $uri $uri/ /index.php?$query_string;</span>
+<span class="line">        try_files $uri $uri/ /index.php?$is_args$query_string;</span>
+<span class="line">        </span>
 <span class="line">    }</span>
+<span class="line"></span>
+<span class="line">    # 禁止访问的文件或目录</span>
+<span class="line">    # location ~ ^/(\.user.ini|\.htaccess|\.git|\.svn|\.project|LICENSE|README.md)</span>
+<span class="line">    # {</span>
+<span class="line">    #     return 404;</span>
+<span class="line">    # }</span>
 <span class="line"></span>
 <span class="line">    location ~ \.php$ {</span>
 <span class="line">        include snippets/fastcgi-php.conf;</span>
@@ -28,7 +40,7 @@
 <span class="line">    }</span>
 <span class="line">}</span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_3-配置-laravel" tabindex="-1"><a class="header-anchor" href="#_3-配置-laravel"><span>3. 配置 Laravel</span></a></h2>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_3-配置-laravel" tabindex="-1"><a class="header-anchor" href="#_3-配置-laravel"><span>3. 配置 Laravel</span></a></h2>
 <p>在 Laravel 中，你需要设置中间件来处理子域名的重定向。假设每个用户有一个唯一的子域名，你可以在用户登录后进行重定向。</p>
 <h3 id="_3-1-设置-env" tabindex="-1"><a class="header-anchor" href="#_3-1-设置-env"><span>3.1 设置 <code v-pre>.env</code></span></a></h3>
 <p>添加一个子域名的配置到 <code v-pre>.env</code> 文件：</p>
