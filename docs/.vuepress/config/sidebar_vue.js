@@ -61,5 +61,15 @@ export default {
                         },
                     ]
                 },
+                {
+                    text: 'demo',
+                    children: [
+                        {
+                            text: '打印面单-雏形',
+                            link: 'demo/print/print1.md',
+                        },
+                    ]
+                },
+
             ],
 }
