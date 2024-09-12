@@ -68,6 +68,10 @@ export default {
                             text: '打印面单-雏形',
                             link: 'demo/print/print1.md',
                         },
+                        {
+                            text: '打印面单-多模板',
+                            link: 'demo/print/print2.md',
+                        },
                     ]
                 },
 

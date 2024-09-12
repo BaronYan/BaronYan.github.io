@@ -3,11 +3,12 @@
 <div class="language-bash line-numbers-mode" data-highlighter="prismjs" data-ext="sh" data-title="sh"><pre v-pre class="language-bash"><code><span class="line"><span class="token comment"># 初始化项目</span></span>
 <span class="line"><span class="token function">npm</span> create vue@latest ./</span>
 <span class="line"></span>
-<span class="line"></span>
 <span class="line"><span class="token comment"># 安装依赖 https://lindell.me/JsBarcode/</span></span>
 <span class="line"><span class="token function">npm</span> <span class="token function">install</span> jsbarcode</span>
+<span class="line"></span>
+<span class="line"><span class="token comment"># npm install -D sass-embedded</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_2-完整代码" tabindex="-1"><a class="header-anchor" href="#_2-完整代码"><span>2. 完整代码</span></a></h2>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_2-完整代码" tabindex="-1"><a class="header-anchor" href="#_2-完整代码"><span>2. 完整代码</span></a></h2>
 <h3 id="_2-1-main-js" tabindex="-1"><a class="header-anchor" href="#_2-1-main-js"><span>2.1 main.js</span></a></h3>
 <p><code v-pre>src/main.js</code></p>
 <div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js" data-title="js"><pre v-pre class="language-javascript"><code><span class="line"><span class="token keyword">import</span> <span class="token string">'./assets/main.css'</span></span>

@@ -7,9 +7,10 @@
 # 初始化项目
 npm create vue@latest ./
 
-
 # 安装依赖 https://lindell.me/JsBarcode/
 npm install jsbarcode
+
+# npm install -D sass-embedded
 ```
 
 ## 2. 完整代码
