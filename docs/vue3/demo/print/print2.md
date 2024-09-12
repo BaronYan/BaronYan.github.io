@@ -60,9 +60,9 @@ createApp(App).mount('#app')
 @tailwind utilities;
 ```
 
-### utils
+## utils
 
-#### barcodeGenerator.js
+### barcodeGenerator.js
 
 ```js
 // 条形码生成工具
@@ -118,7 +118,7 @@ export function getCurrentCounter() {
 // 考虑移除 lastUsedSuffix 相关的逻辑,除非它在项目的其他部分被使用
 ```
 
-#### fakeDataGenerator.js
+### fakeDataGenerator.js
 
 ```js
 // 生成随机测试数据
@@ -144,7 +144,7 @@ export function generateRandomTestData(type = 'express') {
 }
 ```
 
-#### printHelper.js
+### printHelper.js
 
 ```js
 // 打印辅助函数
@@ -345,7 +345,7 @@ function getLabelSize(labelType, customWidth, customHeight) {
 // 移除了 getLabelContent 函数,因为现在它将作为参数传入
 ```
 
-#### printTemplates.js
+### printTemplates.js
 
 ```js
 /**
@@ -413,9 +413,9 @@ export const getCustomerMarkContent = (labelData, barcode) => `
 // 每个新函数应该遵循类似的模式,接收labelData和barcode参数,返回格式化的HTML字符串
 ```
 
-### components
+## components
 
-#### BarcodeSettings.vue
+### BarcodeSettings.vue
 
 ```vue
 <!-- 条形码设置组件 -->
@@ -467,7 +467,7 @@ watch(() => props.barcodeSuffixLength, (newValue) => suffixLength.value = newVal
 </script>
 ```
 
-#### BasePrintForm.vue
+### BasePrintForm.vue
 
 ```vue
 <template>
@@ -504,7 +504,7 @@ const submitForm = () => {
 
 ```
 
-#### CustomerMarkForm.vue
+### CustomerMarkForm.vue
 
 ```vue
 <template>
@@ -553,7 +553,7 @@ const submitForm = () => {
   </script>
 ```
 
-#### ExpressLabelForm.vue
+### ExpressLabelForm.vue
 ```vue
 <!-- 表单组件 -->
 <template>
@@ -620,7 +620,7 @@ onMounted(() => {
 </style>
 ```
 
-#### ExpressLabelPreview.vue
+### ExpressLabelPreview.vue
 
 ```vue
 <!-- 预览组件 -->
@@ -735,7 +735,7 @@ watch(() => props.labelData, () => {
 @import '../assets/styles/global.scss';
 </style>
 ```
-#### ExpressLabelPrinter.vue
+### ExpressLabelPrinter.vue
 ```vue
 <template>
   <div class="relative h-screen overflow-hidden">
@@ -880,7 +880,7 @@ const closeSettings = () => {
 }
 </script>
 ```
-#### Modal.vue
+### Modal.vue
 ```vue
 <template>
     <div v-if="show" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50" @click="closeModal">
@@ -944,7 +944,7 @@ const closeSettings = () => {
   }
   </style>
   ```
-  #### PrintManager.vue
+  ### PrintManager.vue
 
   ```vue
 <template>
@@ -1010,7 +1010,7 @@ const closeSettings = () => {
   }
   </script>
   ```
-  #### PrintSettings.vue
+  ### PrintSettings.vue
 
   ```vue
 <!-- 打印设置组件 -->
