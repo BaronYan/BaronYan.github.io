@@ -57,7 +57,7 @@ export default {
                     text: 'WebWorker',
                     children: [
                         {
-                            text: 'web Worker',
+                            text: 'Web Worker',
                             link: 'webworker.md',
                         }
                     ]

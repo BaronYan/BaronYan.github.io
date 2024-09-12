@@ -307,3 +307,63 @@ printWorker.onmessage = function(event) {
     - 它可以避免与局部变量名冲突。
 
 在您的 `printWorker.js` 中，`self.onmessage` 用于设置消息处理函数，`self.postMessage()` 用于向主线程发送处理结果。这是 Web Worker 与主线程通信的标准方式。
+
+## 属性和方法
+
+常用的 Worker 属性和方法都有哪些 
+
+Web Worker 常用的属性和方法主要包括：
+
+### 1. 创建 Worker
+
+```js
+const worker = new Worker('worker.js');
+```
+
+### 2. 发送消息到 Worker
+```js
+worker.postMessage(data);
+```
+### 3. 接收 Worker 消息
+```js
+worker.onmessage = function(event) {
+  console.log('收到 Worker 消息:', event.data);
+};
+```
+### 4. 处理 Worker 错误
+```js
+worker.onerror = function(error) {
+  console.error('Worker 错误:', error);
+};
+```
+### 5. 终止 Worker
+```js
+worker.terminate();
+```
+
+### 在 Worker 内部
+
+####  6. 接收主线程消息
+
+```js
+self.onmessage = function(event) {
+  console.log('收到主线程消息:', event.data);
+};
+```
+
+#### 7. 发送消息到主线程
+```js
+self.postMessage(data);
+```
+
+#### 导入脚本
+
+```js
+importScripts('script1.js', 'script2.js');
+```
+
+#### 关闭 Worker
+```js
+self.close();
+```
+这些方法和属性允许您在主线程和 Worker 之间进行通信，处理错误，以及管理 Worker 的生命周期。在您的项目中，您主要使用了 postMessage 和 onmessage 来实现主线程和 Worker 之间的通信，这是最常用的 Worker 操作。
