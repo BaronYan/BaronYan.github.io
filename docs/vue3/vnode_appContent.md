@@ -30,3 +30,75 @@ vnode.appContext = appContext;
 - 全局配置（如错误处理）可以正确应用到新创建的组件。
 
 总之，设置 `appContext` 确保了动态创建的组件能够与主应用程序保持一致的上下文环境，使其行为与直接在模板中使用的组件一致。
+
+appContext 的使用主要在以下几个方面：
+
+1. 获取 appContext：
+    - 通常，你可以从根组件或者 app 实例中获取 appContext：
+
+```js
+const app = createApp(App);
+const appContext = app._context;
+
+// 或者在组件内部
+export default {
+  setup() {
+    const appContext = getCurrentInstance().appContext;
+    // ...
+  }
+}
+```
+2. 传递 `appContext`：
+    - 在动态创建组件时，你可以传递 appContext：
+```js
+const vnode = createVNode(MyComponent, props);
+vnode.appContext = appContext;
+render(vnode, container);
+```
+3. 使用 appContext 中的全局资源
+
+```js
+// 在组件内部
+export default {
+  setup() {
+    const { globalProperties } = getCurrentInstance().appContext.config;
+    // 使用全局属性
+    console.log(globalProperties.$someGlobalMethod());
+  }
+}
+```
+
+4. 注册全局组件
+   
+```js
+const app = createApp(App);
+app.component('GlobalComponent', GlobalComponent);
+```
+
+5. 提供全局数据
+
+```js
+const app = createApp(App);
+app.provide('globalData', { /* ... */ });
+
+// 在任何组件中使用
+export default {
+  setup() {
+    const globalData = inject('globalData');
+    // ...
+  }
+}
+```
+
+6. 配置全局选项
+```js
+const app = createApp(App);
+app.config.errorHandler = (err) => {
+  // 处理错误
+};
+```
+
+在你的代码中，`appContext` 主要用于确保动态创建的消息框组件能够访问到与主应用相同的全局资源和配置。这对于保持一致性和功能完整性非常重要，特别是当你的应用使用了全局组件、指令或者提供了全局数据时。
+
+例如，如果你的消息框组件内部使用了某个全局注册的组件或指令，或者需要访问通过 provide 提供的全局数据，正确设置 `appContext` 就变得至关重要。
+
