@@ -6,7 +6,7 @@ import {default as sidebar_vue} from './sidebar_vue';
 import {default as sidebar_laravel} from './sidebar_laravel';
 import {default as sidebar_mysql} from './sidebar_mysql';
 import {default as sidebar_js} from './sidebar_js';
-
+import {default as sidebar_css} from './sidebar_css';
 export default {
     ...linux,
     ...sidebar_env,
@@ -15,5 +15,6 @@ export default {
     ...sidebar_vue,
     ...sidebar_laravel,
     ...sidebar_mysql,
-    ...sidebar_js
+    ...sidebar_js,
+    ...sidebar_css
 }

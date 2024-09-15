@@ -24,16 +24,40 @@
 </ul>
 <p>在这个上下文中，component 属性是 VNode 的一个重要部分，特别是在处理组件时。</p>
 <p>具体来说，component 属性用于存储与 VNode 关联的组件实例。它包含了与该 VNode 对应的 Vue 组件的所有信息和方法。下面是一些相关细节：</p>
+<p>关注点：在大多数情况下，我们更关心组件实例而不是虚拟节点本身。</p>
 <ol>
-<li><strong>组件实例</strong>：<br>
-component 属性持有的是一个组件实例，它包含了组件的所有状态、方法、生命周期钩子等等。</li>
-<li><strong>动态组件</strong>：<br>
-当使用动态组件时，component 属性会被更新以反映当前渲染的组件。</li>
-<li><strong>访问组件实例</strong>：<br>
-可以通过访问 VNode 的 component 属性来获得与之关联的 Vue 组件实例。这对于一些高级操作或自定义渲染逻辑非常有用。</li>
-<li><strong>组件内部状态</strong>：<br>
-component 属性中的组件实例包含了组件的内部状态（如 data、props、computed 等），这可以用来调试或者执行一些复杂的状态管理。</li>
+<li><strong>API 设计</strong>：
+<ul>
+<li>这可能是框架设计者有意为之，以提供更直接的组件实例访问方式。</li>
+</ul>
+</li>
+<li><strong>组件实例</strong>：
+<ul>
+<li><code v-pre>vnode.component</code> 属性持有的是一个组件实例，它包含了组件的所有状态、方法、生命周期钩子等等。</li>
+</ul>
+</li>
+<li><strong>访问性</strong>
+<ul>
+<li>通过返回 <code v-pre>vnode.component</code>，我们可以直接访问和操作组件实例，而不需要通过 vnode 来间接访问。</li>
+</ul>
+</li>
+<li><strong>动态组件</strong>：
+<ul>
+<li>当使用动态组件时，<code v-pre>component</code> 属性会被更新以反映当前渲染的组件。</li>
+</ul>
+</li>
+<li><strong>访问组件实例</strong>：
+<ul>
+<li>可以通过访问 <code v-pre>vnode.component</code> 属性来获得与之关联的 Vue 组件实例。这对于一些高级操作或自定义渲染逻辑非常有用。</li>
+</ul>
+</li>
+<li><strong>组件内部状态</strong>：
+<ul>
+<li><code v-pre>vnode.component</code> 属性中的组件实例包含了组件的内部状态（如 data、props、computed 等），这可以用来调试或者执行一些复杂的状态管理。</li>
+</ul>
+</li>
 </ol>
+<p>总的来说，返回 <code v-pre>vnode.component</code> 提供了更直接、更有用的组件实例访问，这在大多数使用场景中可能更为合适。但具体原因可能还需要查看框架的设计文档或源码来确认。</p>
 <h2 id="示例" tabindex="-1"><a class="header-anchor" href="#示例"><span>示例</span></a></h2>
 <p>假设你有一个简单的 Vue 组件结构，并希望通过 VNode 来访问组件实例：</p>
 <div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js" data-title="js"><pre v-pre class="language-javascript"><code><span class="line"><span class="token keyword">const</span> app <span class="token operator">=</span> Vue<span class="token punctuation">.</span><span class="token function">createApp</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
