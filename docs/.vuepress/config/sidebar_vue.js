@@ -27,7 +27,11 @@ export default {
                         {
                             text: 'component.proxy',
                             link: 'vnode.component.proxy.md',
-                        }
+                        },
+                        {
+                            text: 'appContext',
+                            link: 'vnode_appContext.md',
+                        },
                     ]
                 },
                 {
