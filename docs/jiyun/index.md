@@ -96,6 +96,19 @@ php artisan serve
 yarn dev
 ```
 
+## 安装其他依赖
+
+### agent && location
+```bash
+# 支持 Laravel 的 PHP 桌面/移动用户代理解析器，基于Mobile Detect，具有桌面支持和附加功能。
+# https://github.com/jenssegers/agent
+composer require jenssegers/agent
+
+# 使用各种服务根据访问者的 IP 地址检索其位置。
+# https://github.com/stevebauman/location
+composer require stevebauman/location
+```
+
 ### 实战练习
 
 1. 创建一个订单
