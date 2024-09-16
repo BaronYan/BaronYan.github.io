@@ -19,6 +19,9 @@ title: Home
 **node**
 - [node](/node/)
 
+## 软件有关
+- [software](/software/)
+
 
 geekdaxue.co
 

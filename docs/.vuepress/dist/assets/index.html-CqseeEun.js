@@ -1,0 +1,1 @@
+import{_ as e,c as t,o as r}from"./app-DZk_mc1y.js";const a={};function n(o,c){return r(),t("div")}const i=e(a,[["render",n],["__file","index.html.vue"]]),l=JSON.parse('{"path":"/software/","title":"","lang":"en-US","frontmatter":{},"headers":[],"git":{"updatedTime":null,"contributors":[]},"filePathRelative":"software/index.md","excerpt":""}');export{i as comp,l as data};

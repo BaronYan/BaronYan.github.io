@@ -12,6 +12,10 @@
 <ul>
 <li><RouteLink to="/node/">node</RouteLink></li>
 </ul>
+<h2 id="软件有关" tabindex="-1"><a class="header-anchor" href="#软件有关"><span>软件有关</span></a></h2>
+<ul>
+<li><RouteLink to="/software/">software</RouteLink></li>
+</ul>
 <p>geekdaxue.co</p>
 <div class="flex gap-4">
     <div class="flex flex-col">
