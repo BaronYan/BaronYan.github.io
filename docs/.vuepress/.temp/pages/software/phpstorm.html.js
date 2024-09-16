@@ -1,0 +1,3 @@
+import comp from "/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/software/phpstorm.html.vue"
+const data = JSON.parse("{\"path\":\"/software/phpstorm.html\",\"title\":\"\",\"lang\":\"en-US\",\"frontmatter\":{},\"headers\":[],\"git\":{\"updatedTime\":null,\"contributors\":[]},\"filePathRelative\":\"software/phpstorm.md\",\"excerpt\":\"<p>当定义函数的时候，在这里: <code>if (props.appendTo)</code>,IDE 会提示 <code>props.appendTo</code> 为未解析的变量，如何取消这个提示?</p>\\n<p>要解决 IDE 对 <code>props.appendTo</code> 的未解析变量提示，我们可以通过在函数参数中明确定义 props 的类型来解决这个问题。</p>\\n<ul>\\n<li>由于您的文件是 <code>.js</code> 文件，我们将使用 <code>JSDoc</code> 注释。\\n以下是修改后的 <code>getAppendToElement</code> 函数：</li>\\n</ul>\"}")
+export { comp, data }
