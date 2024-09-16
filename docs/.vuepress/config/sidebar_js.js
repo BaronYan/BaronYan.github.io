@@ -6,6 +6,14 @@ export default {
                         {
                             text: '基础知识',
                             link: 'base/index.md',
+                        },
+                        {
+                            text: 'promise1',
+                            link: 'promise/promise1.md',
+                        },
+                        {
+                            text: 'promise2',
+                            link: 'promise/promise2.md',
                         }
                     ]
                 },
