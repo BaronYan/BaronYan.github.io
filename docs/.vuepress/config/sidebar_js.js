@@ -9,7 +9,7 @@ export default {
                         },
                         {
                             text: 'promise1',
-                            link: 'promise/promise1.md',
+                            link: 'promise/promise.md',
                         },
                         {
                             text: 'promise2',
