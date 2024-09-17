@@ -10,6 +10,10 @@ export default {
                         {
                             text: 'watchEffect',
                             link: 'watchEffect.md',
+                        },
+                        {
+                            text: '注入全局属性',
+                            link: '注入全局属性.md',
                         }
                     ]
                 },

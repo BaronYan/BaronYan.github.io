@@ -8,6 +8,11 @@ export default {
                             link: 'base/index.md',
                         },
                         {
+                            text: 'promise简介',
+                            link: 'promise/index.md',
+                        
+                        },
+                        {
                             text: 'promise1',
                             link: 'promise/promise.md',
                         },
