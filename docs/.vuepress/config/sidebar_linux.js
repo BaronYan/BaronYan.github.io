@@ -14,6 +14,20 @@ export default {
             ]
         },
         {
+            text: 'WSL 常用设置',
+            children:[
+                {
+                    text: '设置wsl中的php到vscode',
+                    link:'设置wsl中的php到vscode.md'
+                },
+                {
+                    text: 'curl',
+                    link:'curl.md'
+                }
+            ]
+        },
+
+        {
             text: '知识',
             children:[
                 {
