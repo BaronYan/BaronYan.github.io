@@ -48,6 +48,7 @@ export const routes = Object.fromEntries([
   ["/jiyun/env.html", { loader: () => import(/* webpackChunkName: "jiyun_env.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/jiyun/env.html.js"), meta: {"title":""} }],
   ["/jiyun/", { loader: () => import(/* webpackChunkName: "jiyun_index.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/jiyun/index.html.js"), meta: {"title":""} }],
   ["/jiyun/%E5%A4%9A%E5%AD%90%E5%9F%9F%E5%90%8D%E9%85%8D%E7%BD%AE.html", { loader: () => import(/* webpackChunkName: "jiyun_多子域名配置.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/jiyun/多子域名配置.html.js"), meta: {"title":"多子域名配置"} }],
+  ["/laravel/auth.html", { loader: () => import(/* webpackChunkName: "laravel_auth.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/laravel/auth.html.js"), meta: {"title":""} }],
   ["/laravel/cache.html", { loader: () => import(/* webpackChunkName: "laravel_cache.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/laravel/cache.html.js"), meta: {"title":""} }],
   ["/laravel/curd%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5.html", { loader: () => import(/* webpackChunkName: "laravel_curd最佳实践.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/laravel/curd最佳实践.html.js"), meta: {"title":""} }],
   ["/laravel/eloquent.html", { loader: () => import(/* webpackChunkName: "laravel_eloquent.html" */"/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/laravel/eloquent.html.js"), meta: {"title":"Eloquent 基本知识"} }],

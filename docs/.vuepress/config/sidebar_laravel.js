@@ -14,11 +14,20 @@ export default {
             ]
         },
         {
-            text: 'request',
+            text: '请求',
             children: [
                 {
                     text: 'request',
                     link: 'request.md',
+                },
+            ]
+        },
+        {
+            text: '认证',
+            children: [
+                {
+                    text: 'auth',
+                    link: 'auth.md',
                 },
             ]
         },
