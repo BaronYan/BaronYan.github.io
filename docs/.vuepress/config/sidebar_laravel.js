@@ -14,6 +14,15 @@ export default {
             ]
         },
         {
+            text: 'request',
+            children: [
+                {
+                    text: 'request',
+                    link: 'request.md',
+                },
+            ]
+        },
+        {
             text: 'migrations',
             children: [
                 {
