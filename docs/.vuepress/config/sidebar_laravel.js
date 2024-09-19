@@ -56,6 +56,10 @@ export default {
                     text: 'seeder',
                     link: 'seeder.md',
                 },
+                {
+                    text: 'seeder2',
+                    link: 'seeder2.md',
+                },
             ]
         },
         {
