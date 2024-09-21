@@ -1,0 +1,3 @@
+import comp from "/home/yanbeirong/www/baronblogs/docs/.vuepress/.temp/pages/php/new_static.html.vue"
+const data = JSON.parse("{\"path\":\"/php/new_static.html\",\"title\":\"\",\"lang\":\"en-US\",\"frontmatter\":{},\"headers\":[],\"git\":{\"updatedTime\":null,\"contributors\":[]},\"filePathRelative\":\"php/new_static.md\",\"excerpt\":\"<p><code>$instance = new static;</code> 是什么意思？</p>\\n<p><code>$instance = new static;</code> 在 PHP 中创建了一个新的当前类的实例。让我解释一下这里的 <code>static</code> 关键字：</p>\\n<ul>\\n<li><code>static</code> 在这个上下文中是一个后期静态绑定（Late Static Binding）的用法。</li>\\n<li>当在一个静态方法中使用时，<code>static</code> 关键字指向的是调用该方法的类。</li>\\n<li><code>new static</code> 会创建一个新的对象，这个对象的类型是调用 <code>reorderAll</code> 方法的那个类。</li>\\n</ul>\"}")
+export { comp, data }

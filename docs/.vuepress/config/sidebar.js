@@ -8,6 +8,7 @@ import {default as sidebar_mysql} from './sidebar_mysql';
 import {default as sidebar_js} from './sidebar_js';
 import {default as sidebar_css} from './sidebar_css';
 import {default as sidebar_software} from './sidebar_software';
+import {default as sidebar_php} from './sidebar_php';
 export default {
     ...linux,
     ...sidebar_env,
@@ -18,5 +19,6 @@ export default {
     ...sidebar_mysql,
     ...sidebar_js,
     ...sidebar_css,
-    ...sidebar_software
+    ...sidebar_software,
+    ...sidebar_php
 }
