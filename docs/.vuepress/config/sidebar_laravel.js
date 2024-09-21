@@ -99,6 +99,10 @@ export default {
                     text: '接口和实现',
                     link: '接口和实现.md',
                 },
+                {
+                    text: 'trait引导机制',
+                    link: 'laravel 中 trait 引导机制.md',
+                },
             ]
         }
     ]
