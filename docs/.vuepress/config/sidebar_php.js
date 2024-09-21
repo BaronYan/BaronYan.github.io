@@ -18,6 +18,11 @@ export default {
                         }
                         ,
                         {
+                            text: '反射',
+                            link: 'static_class.md',
+                        }
+                        ,
+                        {
                             text: '类型转换',
                             link: '类型转换.md',
                         },
