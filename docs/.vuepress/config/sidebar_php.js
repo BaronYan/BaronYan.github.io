@@ -20,6 +20,10 @@ export default {
                         {
                             text: '反射',
                             link: 'static_class.md',
+                        },
+                        {
+                            text: 'ReflectionClass',
+                            link: 'reflectionclass.md',
                         }
                         ,
                         {
