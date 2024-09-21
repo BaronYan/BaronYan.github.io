@@ -95,6 +95,10 @@ export default {
                     text: '服务类仓储类查询类',
                     link: '服务类仓储类查询类.md',
                 },
+                {
+                    text: '接口和实现',
+                    link: '接口和实现.md',
+                },
             ]
         }
     ]
