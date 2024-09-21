@@ -100,8 +100,8 @@ export default {
                     link: '接口和实现.md',
                 },
                 {
-                    text: 'trait引导机制',
-                    link: 'laravel 中 trait 引导机制.md',
+                    text: 'laravel 中 trait 引导机制',
+                    link: 'trait引导机制.md',
                 },
             ]
         }
