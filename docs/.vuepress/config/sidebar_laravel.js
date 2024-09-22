@@ -104,6 +104,15 @@ export default {
                     link: 'trait引导机制.md',
                 },
             ]
+        },
+        {
+            text: 'plugins',
+            children:[
+                {
+                    text: 'IDE Helper Generator for Laravel',
+                    link: 'ide_helper.md'
+                }
+            ]
         }
     ]
 }
