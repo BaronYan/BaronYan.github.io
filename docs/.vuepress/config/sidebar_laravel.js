@@ -32,6 +32,15 @@ export default {
             ]
         },
         {
+            text: '验证',
+            children: [
+                {
+                    text: 'fail',
+                    link: 'fail.md',
+                },
+            ]
+        },
+        {
             text: 'migrations',
             children: [
                 {
