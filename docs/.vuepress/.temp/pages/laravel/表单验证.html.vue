@@ -27,6 +27,30 @@
 <ul>
 <li>首先，要为路由启用预识别，HandlePrecognitiveRequests应将中间件添加到路由定义中。您还应该创建一个表单请求来容纳路由的验证规则：</li>
 </ul>
+<h2 id="request-validated" tabindex="-1"><a class="header-anchor" href="#request-validated"><span>request-&gt;validated</span></a></h2>
+<p><code v-pre>$data = $request-&gt;validated();</code> 可以获取到经过验证的请求数据。</p>
+<ol>
+<li>默认情况下，<code v-pre>validated()</code> 方法只会返回在 WarehouseRequest 类的 <code v-pre>rules()</code> 方法中定义了验证规则的字段。</li>
+<li>如果请求中包含了未在验证规则中定义的字段，这些字段不会被包含在 <code v-pre>validated()</code> 方法的返回结果中。</li>
+<li>但是，Laravel 提供了一种方法可以包含未经验证的字段。在 WarehouseRequest 类中，你可以重写 <code v-pre>passedValidation()</code> 方法来实现这一点。</li>
+</ol>
+<p>例如：</p>
+<div class="language-php line-numbers-mode" data-highlighter="prismjs" data-ext="php" data-title="php"><pre v-pre class="language-php"><code><span class="line"><span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function-definition function">passedValidation</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span>
+<span class="line"><span class="token punctuation">{</span></span>
+<span class="line">    <span class="token variable">$this</span><span class="token operator">-></span><span class="token function">merge</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token function">all</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>这样做会将所有请求数据合并到已验证的数据中，包括那些没有定义验证规则的字段。</p>
+<p>如果你只想获取特定的未验证字段，可以这样做：</p>
+<div class="language-php line-numbers-mode" data-highlighter="prismjs" data-ext="php" data-title="php"><pre v-pre class="language-php"><code><span class="line"><span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function-definition function">passedValidation</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span>
+<span class="line"><span class="token punctuation">{</span></span>
+<span class="line">    <span class="token variable">$this</span><span class="token operator">-></span><span class="token function">merge</span><span class="token punctuation">(</span><span class="token punctuation">[</span></span>
+<span class="line">        <span class="token string single-quoted-string">'some_field'</span> <span class="token operator">=></span> <span class="token variable">$this</span><span class="token operator">-></span><span class="token function">input</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'some_field'</span><span class="token punctuation">)</span><span class="token punctuation">,</span></span>
+<span class="line">    <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>如果你想获取所有字段，包括未验证的，你可以直接使用 <code v-pre>$request-&gt;all()</code> 而不是 <code v-pre>$request-&gt;validated()</code>。但这样做会失去验证的安全性优势。</p>
+<p>总的来说，默认情况下，<code v-pre>validated()</code> 方法只返回经过验证的字段。如果你需要未经验证的字段，你需要额外的步骤或使用其他方法。在处理敏感数据时，建议只使用经过验证的数据，以确保数据的安全性和有效性。</p>
 </div></template>
 
 
