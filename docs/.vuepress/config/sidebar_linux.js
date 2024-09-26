@@ -35,6 +35,15 @@ export default {
                     link:'CPU是如何执行程序的.md'
                 }
             ]
+        },
+        {
+            text: '安装软件',
+            children:[
+                {
+                    text: '安装 redis',
+                    link:'安装redis.md'
+                }
+            ]
         }
     ]
 }
