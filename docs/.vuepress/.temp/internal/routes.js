@@ -34,6 +34,7 @@ export const routes = Object.fromEntries([
   ["/css/outline.html", { loader: () => import(/* webpackChunkName: "css_outline.html" */"/home/yanbeirong/www/myblog/docs/.vuepress/.temp/pages/css/outline.html.js"), meta: {"title":""} }],
   ["/css/position.html", { loader: () => import(/* webpackChunkName: "css_position.html" */"/home/yanbeirong/www/myblog/docs/.vuepress/.temp/pages/css/position.html.js"), meta: {"title":""} }],
   ["/css/shadow%E6%A1%88%E4%BE%8B.html", { loader: () => import(/* webpackChunkName: "css_shadow案例.html" */"/home/yanbeirong/www/myblog/docs/.vuepress/.temp/pages/css/shadow案例.html.js"), meta: {"title":""} }],
+  ["/css/tailwindcss_font.html", { loader: () => import(/* webpackChunkName: "css_tailwindcss_font.html" */"/home/yanbeirong/www/myblog/docs/.vuepress/.temp/pages/css/tailwindcss_font.html.js"), meta: {"title":""} }],
   ["/css/tailwindcss_sr_only.html", { loader: () => import(/* webpackChunkName: "css_tailwindcss_sr_only.html" */"/home/yanbeirong/www/myblog/docs/.vuepress/.temp/pages/css/tailwindcss_sr_only.html.js"), meta: {"title":"sr-only"} }],
   ["/css/white-space.html", { loader: () => import(/* webpackChunkName: "css_white-space.html" */"/home/yanbeirong/www/myblog/docs/.vuepress/.temp/pages/css/white-space.html.js"), meta: {"title":""} }],
   ["/css/%E5%8D%95%E4%BD%8D%E5%92%8C%E5%87%BD%E6%95%B0.html", { loader: () => import(/* webpackChunkName: "css_单位和函数.html" */"/home/yanbeirong/www/myblog/docs/.vuepress/.temp/pages/css/单位和函数.html.js"), meta: {"title":""} }],

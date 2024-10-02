@@ -92,6 +92,10 @@ export default {
                         {
                             text: 'sr-only',
                             link: 'tailwindcss_sr_only.md',
+                        },
+                        {
+                            text: 'font',
+                            link: 'tailwindcss_font.md',
                         }
                     ]
                 }
