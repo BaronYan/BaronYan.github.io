@@ -112,6 +112,10 @@ export default {
                     text: 'laravel 中 trait 引导机制',
                     link: 'trait引导机制.md',
                 },
+                {
+                    text: '使用阿里云oss上传图片',
+                    link: '使用阿里云oss上传图片.md',
+                },
             ]
         },
         {
