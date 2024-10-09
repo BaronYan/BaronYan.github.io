@@ -20,6 +20,10 @@ export default {
                             link: '组合式函数.md',
                         },
                         {
+                            text: '防止ref不会自动解包',
+                            link: '防止ref不会自动解包.md',
+                        },
+                        {
                             text: '注入全局属性',
                             link: '注入全局属性.md',
                         }

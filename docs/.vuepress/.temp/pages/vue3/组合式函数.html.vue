@@ -7,6 +7,7 @@
 <li>一个组合式函数可以调用一个或多个其他的组合式函数</li>
 <li>每一个调用组合式函数的组件实例会创建其独有的状态拷贝，因此他们不会互相影响。</li>
 <li><strong>将响应式状态传入组合式函数,组合式函数才能成为侦听器</strong>。</li>
+<li></li>
 </ul>
 <h2 id="接收响应式状态" tabindex="-1"><a class="header-anchor" href="#接收响应式状态"><span>接收响应式状态</span></a></h2>
 <p><strong>在vue3中，将响应式状态传入组合式函数,组合式函数才能成为侦听器</strong>。</p>
@@ -67,6 +68,7 @@
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><code v-pre>toValue()</code> 的设计目的是将 <code v-pre>ref</code> 或 <code v-pre>getter</code> 规范化为值。如果参数是 <code v-pre>ref</code>，它会返回 <code v-pre>ref</code> 的值；如果参数是函数，它会调用函数并返回其返回值。否则，它会原样返回参数。它的工作方式类似于 <code v-pre>unref()</code>，但对函数有特殊处理。</p>
 <p>注意<code v-pre> toValue(url)</code> 是在 <code v-pre>watchEffect</code> 回调函数的内部调用的。这确保了在 <code v-pre>toValue()</code> 规范化期间访问的任何响应式依赖项都会被侦听器跟踪。</p>
 <p>这个版本的 <code v-pre>useFetch()</code> 现在能接收静态 URL 字符串、ref 和 getter，使其更加灵活。watch effect 会立即运行，并且会跟踪 toValue(url) 期间访问的任何依赖项。如果没有跟踪到依赖项 (例如 url 已经是字符串)，则 effect 只会运行一次；否则，它将在跟踪到的任何依赖项更改时重新运行。</p>
+<p><strong>如果你的组合式函数在输入参数是 ref 或 getter 的情况下创建了响应式 effect，为了让它能够被正确追踪，请确保要么使用 watch() 显式地监视 ref 或 getter，要么在 watchEffect() 中调用 toValue()。</strong></p>
 </div></template>
 
 
