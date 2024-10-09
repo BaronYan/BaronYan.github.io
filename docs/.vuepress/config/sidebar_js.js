@@ -19,6 +19,10 @@ export default {
                         {
                             text: 'promise2',
                             link: 'promise/promise2.md',
+                        },
+                        {
+                            text: '对象的点（.）语法和方括号（[]）语法的区别',
+                            link: '对象的点和中括号.md',
                         }
                     ]
                 },
