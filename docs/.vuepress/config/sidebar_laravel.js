@@ -56,6 +56,11 @@ export default {
                     text: 'eloquent',
                     link: 'eloquent.md',
                 },
+                {
+                    text: 'updateOrCreate',
+                    link: 'orm_updateOrCreate.md',
+                },
+
             ]
         },
         {

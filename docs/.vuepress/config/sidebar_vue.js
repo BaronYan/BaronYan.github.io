@@ -12,6 +12,14 @@ export default {
                             link: 'watchEffect.md',
                         },
                         {
+                            text: '响应式: 工具函数',
+                            link: '响应式API.md',
+                        },
+                        {
+                            text: '组合式函数',
+                            link: '组合式函数.md',
+                        },
+                        {
                             text: '注入全局属性',
                             link: '注入全局属性.md',
                         }
