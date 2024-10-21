@@ -33,6 +33,10 @@ export default {
                 {
                     text: 'CPU是如何执行程序的',
                     link:'CPU是如何执行程序的.md'
+                },
+                {
+                    text: '开发者登录服务器',
+                    link:'开发者.md'
                 }
             ]
         },

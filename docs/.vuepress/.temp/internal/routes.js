@@ -77,6 +77,7 @@ export const routes = Object.fromEntries([
   ["/linux/curl.html", { loader: () => import(/* webpackChunkName: "linux_curl.html" */"/home/yanbeirong/www/myblog/docs/.vuepress/.temp/pages/linux/curl.html.js"), meta: {"title":"快速认识 curl"} }],
   ["/linux/", { loader: () => import(/* webpackChunkName: "linux_index.html" */"/home/yanbeirong/www/myblog/docs/.vuepress/.temp/pages/linux/index.html.js"), meta: {"title":""} }],
   ["/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.html", { loader: () => import(/* webpackChunkName: "linux_常用命令.html" */"/home/yanbeirong/www/myblog/docs/.vuepress/.temp/pages/linux/常用命令.html.js"), meta: {"title":""} }],
+  ["/linux/%E5%BC%80%E5%8F%91%E8%80%85.html", { loader: () => import(/* webpackChunkName: "linux_开发者.html" */"/home/yanbeirong/www/myblog/docs/.vuepress/.temp/pages/linux/开发者.html.js"), meta: {"title":"开发者登录服务器"} }],
   ["/mysql/", { loader: () => import(/* webpackChunkName: "mysql_index.html" */"/home/yanbeirong/www/myblog/docs/.vuepress/.temp/pages/mysql/index.html.js"), meta: {"title":""} }],
   ["/mysql/mysql%E6%9E%B6%E6%9E%84.html", { loader: () => import(/* webpackChunkName: "mysql_mysql架构.html" */"/home/yanbeirong/www/myblog/docs/.vuepress/.temp/pages/mysql/mysql架构.html.js"), meta: {"title":""} }],
   ["/mysql/tools.html", { loader: () => import(/* webpackChunkName: "mysql_tools.html" */"/home/yanbeirong/www/myblog/docs/.vuepress/.temp/pages/mysql/tools.html.js"), meta: {"title":""} }],
