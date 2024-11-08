@@ -21,8 +21,12 @@ export default {
                             link: 'promise/promise2.md',
                         },
                         {
-                            text: '对象的点（.）语法和方括号（[]）语法的区别',
+                            text: '点语法和方括号语法的区别',
                             link: '对象的点和中括号.md',
+                        },
+                        {
+                            text: '常用字符串数组过滤函数',
+                            link: '常用字符串数组过滤函数.md',
                         }
                     ]
                 },

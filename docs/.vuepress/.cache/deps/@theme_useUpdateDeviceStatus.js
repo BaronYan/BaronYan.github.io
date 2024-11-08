@@ -6,7 +6,7 @@ import {
 } from "./chunk-ICRYXTSQ.js";
 
 // node_modules/@vuepress/theme-default/lib/client/composables/useUpdateDeviceStatus.js
-import cssVariables from "/home/yanbeirong/www/baronblogs/node_modules/@vuepress/theme-default/lib/client/styles/_variables.module.scss";
+import cssVariables from "/home/yanbeirong/www/myblog/node_modules/@vuepress/theme-default/lib/client/styles/_variables.module.scss";
 var DeviceType;
 (function(DeviceType2) {
   DeviceType2["MOBILE"] = "mobile";
